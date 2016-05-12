@@ -36,7 +36,7 @@ class LogInViewController: UIViewController {
             Alamofire.request(.POST, "http://\(addr[0]):5000/login", parameters: ["username": userTextField.text!, "password" : passwordTextField.text!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
                 .responseJSON { (response) -> Void in
                     guard response.result.isSuccess else {
-                        print("Error while fetching remote rooms: \(response.result.error)")
+                        print("Error while fetching remote room: \(response.result.error)")
                         
                         return
                     }
