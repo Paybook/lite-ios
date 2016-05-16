@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */; };
 		14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */; };
 		14ABC4E21CE39774006AAC2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E01CE39774006AAC2F /* Main.storyboard */; };
 		14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4E31CE39775006AAC2F /* LitePaybook.xcdatamodeld */; };
@@ -18,6 +19,9 @@
 		14ABC5101CE3A214006AAC2F /* pbsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC50F1CE3A214006AAC2F /* pbsync.swift */; };
 		14ABC5321CE4363D006AAC2F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC5301CE4363D006AAC2F /* LICENSE */; };
 		14ABC5331CE4363D006AAC2F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC5311CE4363D006AAC2F /* README.md */; };
+		14BF43391CE6824800C45D64 /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF43381CE6824800C45D64 /* BankCell.swift */; };
+		14BF433B1CE6833C00C45D64 /* LinkAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */; };
+		14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */; };
 		C3D11508D1E3C795D1B85BAE /* Pods_LitePaybook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B36E378D4EDF87A8433CF /* Pods_LitePaybook.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		14ABC4D91CE39774006AAC2F /* LitePaybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LitePaybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14ABC4E11CE39774006AAC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,8 +60,11 @@
 		14ABC50D1CE3A19C006AAC2F /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		14ABC50F1CE3A214006AAC2F /* pbsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pbsync.swift; sourceTree = "<group>"; };
 		14ABC52D1CE3C669006AAC2F /* LitePaybook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LitePaybook-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		14ABC5301CE4363D006AAC2F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = LitePaybook/LICENSE; sourceTree = "<group>"; };
-		14ABC5311CE4363D006AAC2F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = LitePaybook/README.md; sourceTree = "<group>"; };
+		14ABC5301CE4363D006AAC2F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		14ABC5311CE4363D006AAC2F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		14BF43381CE6824800C45D64 /* BankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
+		14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountViewController.swift; sourceTree = "<group>"; };
+		14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1F0B36E378D4EDF87A8433CF /* Pods_LitePaybook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LitePaybook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D4FD635243272933D6EEF0 /* Pods-LitePaybook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LitePaybook.release.xcconfig"; path = "Pods/Target Support Files/Pods-LitePaybook/Pods-LitePaybook.release.xcconfig"; sourceTree = "<group>"; };
 		F8F7397432A26BED8ABF2BC2 /* Pods-LitePaybook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LitePaybook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LitePaybook/Pods-LitePaybook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,8 +99,6 @@
 		14ABC4D01CE39773006AAC2F = {
 			isa = PBXGroup;
 			children = (
-				14ABC5301CE4363D006AAC2F /* LICENSE */,
-				14ABC5311CE4363D006AAC2F /* README.md */,
 				14ABC4DB1CE39774006AAC2F /* LitePaybook */,
 				14ABC4F31CE39775006AAC2F /* LitePaybookTests */,
 				14ABC4FE1CE39775006AAC2F /* LitePaybookUITests */,
@@ -115,6 +121,8 @@
 		14ABC4DB1CE39774006AAC2F /* LitePaybook */ = {
 			isa = PBXGroup;
 			children = (
+				14ABC5301CE4363D006AAC2F /* LICENSE */,
+				14ABC5311CE4363D006AAC2F /* README.md */,
 				14ABC5121CE3A25F006AAC2F /* Controllers */,
 				14ABC5111CE3A24D006AAC2F /* Config */,
 				14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */,
@@ -157,7 +165,11 @@
 		14ABC5121CE3A25F006AAC2F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */,
 				14ABC50D1CE3A19C006AAC2F /* LogInViewController.swift */,
+				14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */,
+				14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */,
+				14BF43381CE6824800C45D64 /* BankCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,8 +377,12 @@
 				14ABC50E1CE3A19C006AAC2F /* LogInViewController.swift in Sources */,
 				14ABC5101CE3A214006AAC2F /* pbsync.swift in Sources */,
 				14ABC5331CE4363D006AAC2F /* README.md in Sources */,
+				14BF43391CE6824800C45D64 /* BankCell.swift in Sources */,
+				14BF433B1CE6833C00C45D64 /* LinkAccountViewController.swift in Sources */,
 				14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */,
+				14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */,
 				14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */,
+				14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

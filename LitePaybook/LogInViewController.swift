@@ -10,13 +10,16 @@ import UIKit
 import Alamofire
 
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func didPressEnter(sender: AnyObject) {
         logIn()
+    }
+    @IBAction func close(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +36,49 @@ class LogInViewController: UIViewController {
         
         let addr = getIFAddresses()
             print(addr)
-            Alamofire.request(.POST, "http://\(addr[0]):5000/login", parameters: ["username": userTextField.text!, "password" : passwordTextField.text!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
+        //http://\(addr[0]):5000/login"
+        
+        
+            Alamofire.request(.POST, "http://127.0.0.1:5000/login", parameters: ["username":userTextField.text!, "password" : passwordTextField.text!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
                 .responseJSON { (response) -> Void in
                     guard response.result.isSuccess else {
+                        print(" RESPONSE: \(response.result)")
                         print("Error while fetching remote room: \(response.result.error)")
                         
                         return
                     }
                     
-                    print(response.result)
+                    print(response.result.value)
             }
         
         
     }
+    func textFieldDidEndEditing(textField: UITextField) {
+        view.endEditing(true)
+    }
     
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let nextTag: NSInteger = textField.tag + 1;
+        
+        if textField.tag == 1{
+            view.endEditing(true)
+            // Send credentials
+            
+        }else{
+            // Try to find next responder
+            if let nextResponder: UIResponder! = textField.superview!.viewWithTag(nextTag){
+                nextResponder.becomeFirstResponder()
+            }
+            else {
+                // Not found, so remove keyboard.
+                textField.resignFirstResponder()
+            }
+            
+        }
+        return false // We do not want UITextField to insert line-breaks.
+    }
+
     func getIFAddresses() -> [String] {
         var addresses = [String]()
         
