@@ -92,7 +92,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LogInViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -410,7 +410,7 @@
                                                 </connections>
                                             </button>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4p-Gc-6Nj">
-                                                <rect key="frame" x="8" y="122" width="42" height="21"/>
+                                                <rect key="frame" x="8" y="122" width="284" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.92941176469999998" green="0.30980392159999998" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>

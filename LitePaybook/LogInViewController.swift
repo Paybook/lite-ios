@@ -19,7 +19,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControll
         logIn()
     }
     @IBAction func close(sender: AnyObject) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,21 +37,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControll
         let addr = getIFAddresses()
             print(addr)
         //http://\(addr[0]):5000/login"
+        let data = ["username":userTextField.text!, "password" : passwordTextField.text!]
+        login(data, callback:{
+                print("Success...")
+            }, callback_error:{
+                print("Error...")
+            })
         
-        
-            Alamofire.request(.POST, "http://127.0.0.1:5000/login", parameters: ["username":userTextField.text!, "password" : passwordTextField.text!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
-                .responseJSON { (response) -> Void in
-                    guard response.result.isSuccess else {
-                        print(" RESPONSE: \(response.result)")
-                        print("Error while fetching remote room: \(response.result.error)")
-                        
-                        return
-                    }
-                    
-                    print(response.result.value)
-            }
-        
-        
+       
     }
     func textFieldDidEndEditing(textField: UITextField) {
         view.endEditing(true)
