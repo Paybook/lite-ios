@@ -10,4 +10,7 @@ import UIKit
 
 class BankCell: UICollectionViewCell {
 
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var bankImageView: UIImageView!
+    
 }

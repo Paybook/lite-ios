@@ -16,11 +16,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControll
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func didPressEnter(sender: AnyObject) {
-        logIn()
+        checkFields()
     }
     @IBAction func close(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    func checkFields(){
+        if userTextField.text != "" && passwordTextField.text != "" {
+            let data = ["username":userTextField.text!, "password" : passwordTextField.text!]
+            login(data, callback:openDashboard, callback_error:{
+                print("Error...")
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,20 +42,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControll
         // Dispose of any resources that can be recreated.
     }
     
-    private func logIn(){
+    
+    func openDashboard(token: String?)->Void{
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(token, forKey: "token")
+     
+        let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tabDashboard") as! UITabBarController
+        self.presentViewController(dashboard, animated: true, completion: nil)
         
-        let addr = getIFAddresses()
-            print(addr)
-        //http://\(addr[0]):5000/login"
-        let data = ["username":userTextField.text!, "password" : passwordTextField.text!]
-        login(data, callback:{
-                print("Success...")
-            }, callback_error:{
-                print("Error...")
-            })
-        
-       
     }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         view.endEditing(true)
     }
@@ -57,7 +63,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControll
         if textField.tag == 1{
             view.endEditing(true)
             // Send credentials
-            
+            checkFields()
         }else{
             // Try to find next responder
             if let nextResponder: UIResponder! = textField.superview!.viewWithTag(nextTag){
@@ -72,41 +78,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate, UIViewControll
         return false // We do not want UITextField to insert line-breaks.
     }
 
-    func getIFAddresses() -> [String] {
-        var addresses = [String]()
-        
-        // Get list of all interfaces on the local machine:
-        var ifaddr : UnsafeMutablePointer<ifaddrs> = nil
-        if getifaddrs(&ifaddr) == 0 {
-            
-            // For each interface ...
-            var ptr = ifaddr
-            while ptr != nil {
-                defer { ptr = ptr.memory.ifa_next }
-                
-                let flags = Int32(ptr.memory.ifa_flags)
-                var addr = ptr.memory.ifa_addr.memory
-                
-                // Check for running IPv4, IPv6 interfaces. Skip the loopback interface.
-                if (flags & (IFF_UP|IFF_RUNNING|IFF_LOOPBACK)) == (IFF_UP|IFF_RUNNING) {
-                    if addr.sa_family == UInt8(AF_INET) || addr.sa_family == UInt8(AF_INET6) {
-                        
-                        // Convert interface address to a human readable string:
-                        var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
-                        if (getnameinfo(&addr, socklen_t(addr.sa_len), &hostname, socklen_t(hostname.count),
-                            nil, socklen_t(0), NI_NUMERICHOST) == 0) {
-                            if let address = String.fromCString(hostname) {
-                                addresses.append(address)
-                            }
-                        }
-                    }
-                }
-            }
-            freeifaddrs(ifaddr)
-        }
-        
-        return addresses
-    }
     
     /*
     // MARK: - Navigation

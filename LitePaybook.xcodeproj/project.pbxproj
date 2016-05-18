@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */; };
+		1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426DAC11CEC32B60068A442 /* SettingsViewController.swift */; };
 		14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */; };
 		14ABC4E21CE39774006AAC2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E01CE39774006AAC2F /* Main.storyboard */; };
 		14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4E31CE39775006AAC2F /* LitePaybook.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		1426DAC11CEC32B60068A442 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		14ABC4D91CE39774006AAC2F /* LitePaybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LitePaybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14ABC4E11CE39774006AAC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				14ABC5111CE3A24D006AAC2F /* Config */,
 				14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */,
 				14ABC4E01CE39774006AAC2F /* Main.storyboard */,
+				1426DAC11CEC32B60068A442 /* SettingsViewController.swift */,
 				14C2F57E1CEA343E008F3055 /* ApiCall.swift */,
 				14ABC4E61CE39775006AAC2F /* Assets.xcassets */,
 				14ABC4E81CE39775006AAC2F /* LaunchScreen.storyboard */,
@@ -387,6 +390,7 @@
 				14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */,
 				14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */,
 				14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */,
+				1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

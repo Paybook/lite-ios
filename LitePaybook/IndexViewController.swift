@@ -16,7 +16,10 @@ class IndexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        if NSUserDefaults.standardUserDefaults().objectForKey("token") != nil {
+            let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tabDashboard") as! UITabBarController
+            self.presentViewController(dashboard, animated: true, completion: nil)
+        }
         // Do any additional setup after loading the view.
     }
     
