@@ -9,12 +9,12 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    @IBAction func logOut(sender: AnyObject) {
+    @IBAction func logOutButton(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
         
         
         let indexViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("index") as! IndexViewController
-        self.presentViewController(indexViewController, animated: true, completion: nil)
+        
     }
 
     override func viewDidLoad() {

@@ -12,6 +12,7 @@ class BankCell: UICollectionViewCell {
     
     
     @IBOutlet weak var bankImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var imageUrl : NSURL!
     

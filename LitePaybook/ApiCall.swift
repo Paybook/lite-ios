@@ -47,8 +47,8 @@ public func signup (data: [String:String], callback: (()-> Void)?, callback_erro
     Alamofire.request(.POST,url , parameters: ["username":data["username"]!, "password" : data["password"]!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
             guard response.result.isSuccess else {
-                print(" RESPONSE: \(response.result)")
-                print("Error while fetching remote room: \(response.result.error)")
+                print(" RESPONSE ERROR: \(response.result.error?.code)")
+                
                 if callback_error != nil{
                     callback_error!()
                 }
@@ -65,17 +65,17 @@ public func signup (data: [String:String], callback: (()-> Void)?, callback_erro
 }
 
 
-public func getOrganizations (data: [String:AnyObject], callback: ((response : [String:AnyObject])-> Void), callback_error: (()-> Void)?){
+public func getOrganizations (data: [String:AnyObject], callback: ((response : [String:AnyObject])-> Void), callback_error: ((code: Int)-> Void)?){
     
     let url = "https://sync.paybook.com/v1/catalogues/organizations/sites"
     print(data)
     Alamofire.request(.GET,url , parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
             guard response.result.isSuccess else {
-                print(" RESPONSE: \(response.result)")
-                print("Error while fetching remote room: \(response.result.error)")
+             
+                print("Error \(response.response?.statusCode)")
                 if callback_error != nil{
-                    callback_error!()
+                    callback_error!(code: (response.response?.statusCode)!)
                 }
                 return
             }

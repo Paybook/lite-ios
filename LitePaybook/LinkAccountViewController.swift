@@ -12,8 +12,9 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     var banksData = [[String: AnyObject]]()
     var entitiesData = [[String: AnyObject]]()
+    var sitesData = [[String: AnyObject]]()
     var arrayb = NSArray()
-    var currentType = "banks"    //("banks"/"entities")
+    var currentType = "banks"    //("banks"/"entities"/"sites")
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -62,39 +63,80 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
+    func callback_error(code: Int){
+        switch code{
+        case 401:
+            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
+            let indexViewController = self.storyboard!.instantiateViewControllerWithIdentifier("index")
+            UIApplication.sharedApplication().keyWindow?.rootViewController = indexViewController
+            break
+        default :
+            break
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("token:\(NSUserDefaults.standardUserDefaults().objectForKey("token")!)")
         
         let data = ["token": NSUserDefaults.standardUserDefaults().objectForKey("token")!]
         
-        getOrganizations(data, callback: sortOrganizations, callback_error: nil)
+        getOrganizations(data, callback: sortOrganizations, callback_error: callback_error)
         
         
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currentType == "banks"{
-            return banksData.count
-        }else{
-            return entitiesData.count
-        }
+       
+        var numberOfRows = 0
         
+        switch currentType {
+        case "banks":
+            numberOfRows = banksData.count
+            break
+        case "entities":
+            numberOfRows = entitiesData.count
+            break
+        case "sites":
+            numberOfRows = sitesData.count
+            break
+        default:
+            break
+        }
+        return numberOfRows
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("bankCell", forIndexPath: indexPath) as! BankCell
         
-        //let bank = arrayb[indexPath.row]
-        let bank : [String:AnyObject]
-        if currentType == "banks"{
-            bank = banksData[indexPath.row]
-        }else{
-            bank = entitiesData[indexPath.row]
+        
+        var bank = [String:AnyObject]()
+        
+        switch currentType {
+            case "banks":
+                bank = banksData[indexPath.row]
+                break
+            case "entities":
+                bank = entitiesData[indexPath.row]
+                break
+            case "sites":
+                bank = sitesData[indexPath.row]
+                cell.nameLabel.text = bank["name"] as? String
+                break
+            default:
+                break
         }
         
         if let avatarImage =  bank["avatar"] as? String{
             let url = NSURL(string: "https://s.paybook.com\(avatarImage)")
+        
+            url!.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+                cell.bankImageView!.image = image
+               
+            }
+/*
             
             // Image loading.
             cell.imageUrl = url  // For recycled cells' late image loads.
@@ -114,14 +156,12 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                         }
                     }
                 }
-            }
+            }*/
             
         }else{
            
             
         }
-
-        
         
         
         // Configure the cell
@@ -132,7 +172,13 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if currentType == "banks"{
             let bank = banksData[indexPath.row]
-            print(bank["name"])
+            print(bank["name"]!)
+            if let sites = bank["sites"] as? NSArray {
+                print(sites)
+                sitesData = sites as! [[String : AnyObject]]
+                currentType = "sites"
+                collectionView.reloadData()
+            }
         }else{
             //bank = entitiesData[indexPath.row]
         }
