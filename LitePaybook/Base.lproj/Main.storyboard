@@ -357,10 +357,10 @@
             </objects>
             <point key="canvasLocation" x="2655" y="466"/>
         </scene>
-        <!--View Controller-->
+        <!--Credentials View Controller-->
         <scene sceneID="PFA-9G-567">
             <objects>
-                <viewController id="4Lf-eJ-DrY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="credentialsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Lf-eJ-DrY" customClass="CredentialsViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Thj-2D-rFA"/>
                         <viewControllerLayoutGuide type="bottom" id="gRw-Hc-dBx"/>
@@ -395,6 +395,9 @@
                                 <state key="normal" title="SIGUIENTE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="continueFunc:" destination="4Lf-eJ-DrY" eventType="touchUpInside" id="P9o-5i-xP4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLa-bW-YIo">
                                 <rect key="frame" x="230" y="506" width="100" height="30"/>
@@ -403,10 +406,17 @@
                                 <state key="normal" title="REGRESAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelFunc:" destination="4Lf-eJ-DrY" eventType="touchUpInside" id="BXb-eD-Kax"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="coverImageView" destination="ooo-1j-7Is" id="q3T-IQ-LNK"/>
+                        <outlet property="nameLabel" destination="plM-y0-d5Y" id="mac-z4-ipQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2D-N2-8jR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -465,7 +475,7 @@
         <!--Navigation Controller-->
         <scene sceneID="yMt-sV-XVJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="krF-Zm-Rz9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="indexNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="krF-Zm-Rz9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bFO-U7-fip">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

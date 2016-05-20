@@ -129,7 +129,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         if let avatarImage =  bank["avatar"] as? String{
-            let url = NSURL(string: "https://s.paybook.com\(avatarImage)")
+            let url = NSURL(string: url_images + avatarImage)
         
             url!.fetchImage { image in
                 // Check the cell hasn't recycled while loading.
@@ -174,10 +174,18 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             let bank = banksData[indexPath.row]
             print(bank["name"]!)
             if let sites = bank["sites"] as? NSArray {
-                print(sites)
-                sitesData = sites as! [[String : AnyObject]]
-                currentType = "sites"
-                collectionView.reloadData()
+                //check if have two o more diferent types account
+                if sites.count > 1{
+                    //Display types accounts
+                    sitesData = sites as! [[String : AnyObject]]
+                    currentType = "sites"
+                    collectionView.reloadData()
+                }else{
+                    //open credentials view
+                    let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+                    self.navigationController?.pushViewController(nextStep, animated: true)
+                }
+                
             }
         }else{
             //bank = entitiesData[indexPath.row]

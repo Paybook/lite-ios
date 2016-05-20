@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 
-let apiurl : String = "http://127.0.0.1:5000/"//"<your url server>"
-let api_key : String = "f81113bcd5f1722a5a5050d378e50459"
-
+let api_url : String = "http://127.0.0.1:5000/"//"<your url server>"
+let api_key : String = "<your API key>"
+let url_images : String = "https://s.paybook.com"
 
 
 public func login (data: [String:String], callback: ((token : String?)-> Void), callback_error: (()-> Void)?){
     
-    let url = "\(apiurl)login"
+    let url = "\(api_url)login"
     
     Alamofire.request(.POST,url , parameters: ["username":data["username"]!, "password" : data["password"]!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
@@ -42,7 +42,7 @@ public func login (data: [String:String], callback: ((token : String?)-> Void), 
 
 public func signup (data: [String:String], callback: (()-> Void)?, callback_error: (()-> Void)?){
     
-    let url = "\(apiurl)signup"
+    let url = "\(api_url)signup"
     
     Alamofire.request(.POST,url , parameters: ["username":data["username"]!, "password" : data["password"]!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
