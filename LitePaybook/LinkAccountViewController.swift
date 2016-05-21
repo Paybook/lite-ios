@@ -172,7 +172,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if currentType == "banks"{
             let bank = banksData[indexPath.row]
-            print(bank["name"]!)
+            
             if let sites = bank["sites"] as? NSArray {
                 //check if have two o more diferent types account
                 if sites.count > 1{
@@ -182,8 +182,13 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     collectionView.reloadData()
                 }else{
                     //open credentials view
+                    print(bank["name"]!)
                     let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+                    
+                    nextStep.bank = bank//["sites"] as? [String:AnyObject?]
+                    
                     self.navigationController?.pushViewController(nextStep, animated: true)
+                    print("opened")
                 }
                 
             }

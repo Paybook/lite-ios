@@ -12,6 +12,7 @@
 		14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D311CEF77B80073302B /* CredentialsViewController.swift */; };
 		14860D341CEF82BE0073302B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D331CEF82BE0073302B /* Config.swift */; };
 		14860D361CEF83370073302B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D351CEF83370073302B /* ImageCache.swift */; };
+		14860D3A1CEFC5E90073302B /* CredentialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D391CEFC5E90073302B /* CredentialCell.swift */; };
 		14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */; };
 		14ABC4E21CE39774006AAC2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E01CE39774006AAC2F /* Main.storyboard */; };
 		14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4E31CE39775006AAC2F /* LitePaybook.xcdatamodeld */; };
@@ -52,6 +53,7 @@
 		14860D311CEF77B80073302B /* CredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
 		14860D331CEF82BE0073302B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		14860D351CEF83370073302B /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		14860D391CEFC5E90073302B /* CredentialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialCell.swift; sourceTree = "<group>"; };
 		14ABC4D91CE39774006AAC2F /* LitePaybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LitePaybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14ABC4E11CE39774006AAC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */,
 				14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */,
 				14860D311CEF77B80073302B /* CredentialsViewController.swift */,
+				14860D391CEFC5E90073302B /* CredentialCell.swift */,
 				14BF43381CE6824800C45D64 /* BankCell.swift */,
 			);
 			name = Controllers;
@@ -396,6 +399,7 @@
 				14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */,
 				14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */,
 				14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */,
+				14860D3A1CEFC5E90073302B /* CredentialCell.swift in Sources */,
 				14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */,
 				14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */,
 				1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */,
