@@ -116,10 +116,12 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         switch currentType {
             case "banks":
                 bank = banksData[indexPath.row]
+                cell.nameLabel.text = nil
                 break
             case "entities":
                 bank = entitiesData[indexPath.row]
-                break
+                cell.nameLabel.text = nil
+            break
             case "sites":
                 bank = sitesData[indexPath.row]
                 cell.nameLabel.text = bank["name"] as? String
@@ -136,6 +138,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                 cell.bankImageView!.image = image
                
             }
+            
 /*
             
             // Image loading.

@@ -67,7 +67,7 @@ public func getOrganizations (data: [String:AnyObject], callback: ((response : [
     Alamofire.request(.GET,url , parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
             guard response.result.isSuccess else {
-             
+                
                 print("Error \(response.response?.statusCode)")
                 if callback_error != nil{
                     callback_error!(code: (response.response?.statusCode)!)
@@ -78,11 +78,73 @@ public func getOrganizations (data: [String:AnyObject], callback: ((response : [
             if let responseObj = response.result.value as? [String: AnyObject]{
                 callback(response: responseObj)
             }
-
-           // print(response.result.value)
+            
+            // print(response.result.value)
             
     }
     
     
 }
 
+
+public func validateSession (token: String, callback: ((response : [String:AnyObject])-> Void)?, callback_error: ((code: Int?)-> Void)?){
+    
+    let url = "https://sync.paybook.com/v1/sessions/\(token)/verify"
+    
+    Alamofire.request(.GET,url , parameters: nil, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
+        .responseJSON { (response) -> Void in
+            guard response.result.isSuccess else {
+             
+                print("Error \(response.response?.statusCode)")
+                if ((response.response?.statusCode) != nil){
+                    if callback_error != nil{
+                        callback_error!(code: (response.response?.statusCode)!)
+                    }
+                }
+                
+                return
+            }
+            
+            if let responseObj = response.result.value as? [String: AnyObject]{
+                if callback != nil{
+                    callback!(response: responseObj)
+                }
+                
+            }
+
+            print("validate \(response.result.value)")
+            
+    }
+    
+    
+}
+
+
+public func createCredentials (data: [String:AnyObject], callback: ((response : [String:AnyObject])-> Void)?, callback_error: ((code: Int)-> Void)?){
+    
+    let url = "https://sync.paybook.com/v1/credentials"
+    print(data)
+    Alamofire.request(.POST,url , parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
+        .responseJSON { (response) -> Void in
+            guard response.result.isSuccess else {
+                
+                print("Error \(response.response?.statusCode)")
+                if callback_error != nil{
+                    callback_error!(code: (response.response?.statusCode)!)
+                }
+                return
+            }
+            
+            /*
+            if let responseObj = response.result.value as? [String: AnyObject]{
+                callback(response: responseObj)
+            }
+            */
+            print("Response: \(response)")
+            print("Value: \(response.result.value)")
+            print("Desc: \(response.result.description)")
+            
+    }
+    
+    
+}

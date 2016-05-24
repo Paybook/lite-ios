@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CredentialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -21,9 +22,63 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func continueFunc(sender: AnyObject) {
+        let arrayCredential = credentialCollectionView.visibleCells() as! [CredentialCell]
+        var credentialsString = [String:String]()
+        for i in arrayCredential{
+            credentialsString[i.nameLabel.text!] = i.textField.text
+        }
+        var site = bank["sites"] as? NSArray
+        
+        var data : [String: AnyObject] = [
+            "id_site": site![0]["id_site"]!!,
+            "token": NSUserDefaults.standardUserDefaults().objectForKey("token")!,
+            "credentials": credentialsString        ]
+        
+        print(data)
+        
+        createCredentials(data, callback: nil, callback_error: callback_error)
     }
    
+    func callback(response: [String:AnyObject])->Void{
+        print(response)
+        /*
+        let addr = "127.0.0.1"
+        let port = 4000
+        
+        var host = CFHos
+        
+        //NSHost(address: addr)
+        var inp :NSInputStream?
+        var out :NSOutputStream?
+        
+        NSStream.getStreamsToHost(host, port: port, inputStream: &inp, outputStream: &out)
+        
+        let inputStream = inp!
+        let outputStream = out!
+        inputStream.open()
+        outputStream.open()
+        
+        var readByte :UInt8 = 0
+        while inputStream.hasBytesAvailable {
+            inputStream.read(&readByte, maxLength: 1)
+        }
+        
+        // buffer is a UInt8 array containing bytes of the string "Jonathan Yaniv.".
+        outputStream.write(&buffer, maxLength: buffer.count)*/
+    }
     
+    func callback_error(code: Int){
+        switch code{
+        case 401:
+            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
+            let indexViewController = self.storyboard!.instantiateViewControllerWithIdentifier("index")
+            UIApplication.sharedApplication().keyWindow?.rootViewController = indexViewController
+            break
+        default :
+            break
+        }
+        
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return credentials.count
@@ -33,7 +88,10 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("credentialCell", forIndexPath: indexPath) as! CredentialCell
         let credential = credentials[indexPath.row]
         cell.nameLabel.text = credential["name"] as? String
-
+        
+        if credential["type"] as? String == "password"{
+            cell.textField.secureTextEntry = true
+        }
         return cell
     }
     
@@ -49,7 +107,6 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
 
             }
             let sites = bank["sites"] as? NSArray
-            print(sites![0]["credentials"])
             
             credentials = (sites![0]["credentials"] as? NSArray)!
            
@@ -63,14 +120,5 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
