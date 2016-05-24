@@ -13,7 +13,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     var banksData = [[String: AnyObject]]()
     var entitiesData = [[String: AnyObject]]()
     var sitesData = [[String: AnyObject]]()
-    var arrayb = NSArray()
+    var bankSelected = [String: AnyObject]()
     var currentType = "banks"    //("banks"/"entities"/"sites")
     
     
@@ -28,16 +28,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         currentType = "banks"
         collectionView.reloadData()
     }
-    
-    func getBanks(response: [String:AnyObject])->Void{
-        print("ARRAY\(response["response"])")
-        let bankarray = response["response"] as! [[String: AnyObject]]
-        
-            arrayb = bankarray
-            collectionView.reloadData()
-        
-        
-    }
+  
     
     func sortOrganizations(response: [String:AnyObject])->Void{
         // Cast response to Array
@@ -57,7 +48,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                 
             }
         }
-        arrayb = bankarray
+        
         collectionView.reloadData()
         
         
@@ -116,6 +107,26 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         switch currentType {
             case "banks":
                 bank = banksData[indexPath.row]
+                if let avatarImage =  bank["avatar"] as? String{
+                    let url = NSURL(string: url_images + avatarImage)
+                    print(url_images + avatarImage)
+                    // For recycled cells' late image loads.
+                    if let image = url!.cachedImage {
+                        // Cached: set immediately.
+                        cell.bankImageView!.image = image
+                        
+                    } else {
+                        // Not cached, so load then fade it in.
+                        
+                        url!.fetchImage { image in
+                            // Check the cell hasn't recycled while loading.
+                            /*if self.imageUrl == url {
+                             cell.bankImageView!.image = image
+                             }*/
+                            cell.bankImageView!.image = image
+                        }
+                    }
+                }
                 cell.nameLabel.text = nil
                 break
             case "entities":
@@ -124,59 +135,43 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             break
             case "sites":
                 bank = sitesData[indexPath.row]
+                if let avatarImage =  bankSelected["avatar"] as? String{
+                    let url = NSURL(string: url_images + avatarImage)
+                   
+                    // For recycled cells' late image loads.
+                    if let image = url!.cachedImage {
+                        // Cached: set immediately.
+                        cell.bankImageView!.image = image
+                        
+                    } else {
+                        // Not cached, so load then fade it in.
+                        
+                        url!.fetchImage { image in
+                            // Check the cell hasn't recycled while loading.
+                            /*if self.imageUrl == url {
+                             cell.bankImageView!.image = image
+                             }*/
+                            cell.bankImageView!.image = image
+                        }
+                    }
+                    
+                }
                 cell.nameLabel.text = bank["name"] as? String
                 break
             default:
                 break
         }
         
-        if let avatarImage =  bank["avatar"] as? String{
-            let url = NSURL(string: url_images + avatarImage)
-        
-            url!.fetchImage { image in
-                // Check the cell hasn't recycled while loading.
-                cell.bankImageView!.image = image
-               
-            }
-            
-/*
-            
-            // Image loading.
-            cell.imageUrl = url  // For recycled cells' late image loads.
-            if let image = url!.cachedImage {
-                // Cached: set immediately.
-                cell.bankImageView!.image = image
-                cell.bankImageView!.alpha = 1
-            } else {
-                // Not cached, so load then fade it in.
-                cell.bankImageView!.alpha = 0
-                url!.fetchImage { image in
-                    // Check the cell hasn't recycled while loading.
-                    if cell.imageUrl == url {
-                        cell.bankImageView!.image = image
-                        UIView.animateWithDuration(0.3) {
-                            cell.bankImageView!.alpha = 1
-                        }
-                    }
-                }
-            }*/
-            
-        }else{
-           
-            
-        }
-        
-        
-        // Configure the cell
         return cell
     }
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if currentType == "banks"{
-            let bank = banksData[indexPath.row]
-            
-            if let sites = bank["sites"] as? NSArray {
+        
+        switch currentType {
+        case "banks":
+            bankSelected = banksData[indexPath.row]
+            if let sites = bankSelected["sites"] as? NSArray {
                 //check if have two o more diferent types account
                 if sites.count > 1{
                     //Display types accounts
@@ -185,19 +180,38 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     collectionView.reloadData()
                 }else{
                     //open credentials view
-                    print(bank["name"]!)
+                    print(bankSelected["name"]!)
                     let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
                     
-                    nextStep.bank = bank//["sites"] as? [String:AnyObject?]
+                    nextStep.bank = bankSelected//["sites"] as? [String:AnyObject?]
                     
+                    var site = bankSelected["sites"] as? NSArray
+                    nextStep.siteId = site![0]["id_site"] as? String
                     self.navigationController?.pushViewController(nextStep, animated: true)
                     print("opened")
                 }
                 
             }
-        }else{
-            //bank = entitiesData[indexPath.row]
+
+            break
+        case "entities":
+            
+            break
+        case "sites":
+            var siteSelected = sitesData[indexPath.row]
+            let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+            
+            nextStep.bank = bankSelected//["sites"] as? [String:AnyObject?]
+            nextStep.siteId = siteSelected["id_site"] as? String
+            self.navigationController?.pushViewController(nextStep, animated: true)
+            print("opened")
+            break
+        default:
+            break
         }
+        
+        
+        
     }
     
 }

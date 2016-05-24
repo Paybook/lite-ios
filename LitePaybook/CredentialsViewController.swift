@@ -12,6 +12,8 @@ import Foundation
 class CredentialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var bank : [String:AnyObject?]! = nil
+    var siteId : String!
+    
     var credentials = NSArray()
     
     @IBOutlet weak var coverImageView: UIImageView!
@@ -41,30 +43,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
    
     func callback(response: [String:AnyObject])->Void{
         print(response)
-        /*
-        let addr = "127.0.0.1"
-        let port = 4000
         
-        var host = CFHos
-        
-        //NSHost(address: addr)
-        var inp :NSInputStream?
-        var out :NSOutputStream?
-        
-        NSStream.getStreamsToHost(host, port: port, inputStream: &inp, outputStream: &out)
-        
-        let inputStream = inp!
-        let outputStream = out!
-        inputStream.open()
-        outputStream.open()
-        
-        var readByte :UInt8 = 0
-        while inputStream.hasBytesAvailable {
-            inputStream.read(&readByte, maxLength: 1)
-        }
-        
-        // buffer is a UInt8 array containing bytes of the string "Jonathan Yaniv.".
-        outputStream.write(&buffer, maxLength: buffer.count)*/
     }
     
     func callback_error(code: Int){
@@ -106,9 +85,15 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
 
             }
-            let sites = bank["sites"] as? NSArray
+            if let sites = bank["sites"] as? NSArray{
+                for i in sites{
+                    if i["id_site"] as? String == self.siteId{
+                        credentials = (i["credentials"] as? NSArray)!
+                    }
+                }
+            }
             
-            credentials = (sites![0]["credentials"] as? NSArray)!
+            
            
         }
         // Do any additional setup after loading the view.

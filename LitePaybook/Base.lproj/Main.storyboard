@@ -371,6 +371,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooo-1j-7Is">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="dEq-QN-nw1"/>
                                 </constraints>
@@ -385,9 +386,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vnf-qn-s4K">
-                                <rect key="frame" x="150" y="157" width="300" height="210"/>
+                                <rect key="frame" x="150" y="157" width="300" height="216"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cm4-Eu-9aN">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cm4-Eu-9aN">
                                     <size key="itemSize" width="300" height="70"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -428,7 +429,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0os-lB-SqG">
-                                <rect key="frame" x="150" y="382" width="300" height="30"/>
+                                <rect key="frame" x="150" y="381" width="300" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ii-ZU-Jg0">
                                         <rect key="frame" x="200" y="0.0" width="100" height="30"/>
@@ -460,10 +461,10 @@
                         <constraints>
                             <constraint firstItem="plM-y0-d5Y" firstAttribute="centerX" secondItem="Wi0-oB-6KJ" secondAttribute="centerX" id="1l3-7T-HL7"/>
                             <constraint firstItem="0os-lB-SqG" firstAttribute="centerX" secondItem="Wi0-oB-6KJ" secondAttribute="centerX" id="CRZ-Dd-l1E"/>
-                            <constraint firstItem="0os-lB-SqG" firstAttribute="top" secondItem="Vnf-qn-s4K" secondAttribute="bottom" constant="15" id="MGf-wn-zbR"/>
                             <constraint firstItem="Vnf-qn-s4K" firstAttribute="centerX" secondItem="Wi0-oB-6KJ" secondAttribute="centerX" id="P4L-pC-o04"/>
                             <constraint firstItem="Vnf-qn-s4K" firstAttribute="top" secondItem="plM-y0-d5Y" secondAttribute="bottom" constant="8" id="a2l-wx-gKc"/>
                             <constraint firstItem="plM-y0-d5Y" firstAttribute="top" secondItem="ooo-1j-7Is" secondAttribute="bottom" constant="8" id="g6n-Ds-GAD"/>
+                            <constraint firstItem="0os-lB-SqG" firstAttribute="top" secondItem="Vnf-qn-s4K" secondAttribute="bottom" constant="8" id="mZ6-g7-WFR"/>
                             <constraint firstItem="ooo-1j-7Is" firstAttribute="width" secondItem="Wi0-oB-6KJ" secondAttribute="width" id="rgC-SL-9aG"/>
                             <constraint firstItem="plM-y0-d5Y" firstAttribute="centerX" secondItem="Wi0-oB-6KJ" secondAttribute="centerX" id="smE-aB-1nW"/>
                             <constraint firstItem="ooo-1j-7Is" firstAttribute="centerX" secondItem="Wi0-oB-6KJ" secondAttribute="centerX" id="zb9-4S-ErL"/>

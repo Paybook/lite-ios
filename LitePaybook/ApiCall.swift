@@ -17,10 +17,11 @@ public func login (data: [String:String], callback: ((token : String?)-> Void), 
     Alamofire.request(.POST,url , parameters: ["username":data["username"]!, "password" : data["password"]!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
             guard response.result.isSuccess else {
-                print(" RESPONSE: \(response.result)")
-                print("Error while fetching remote room: \(response.result.error)")
-                if callback_error != nil{
-                    callback_error!()
+                print("Error \(response.response?.statusCode)")
+                if ((response.response?.statusCode) != nil){
+                    if callback_error != nil{
+                        callback_error!()
+                    }
                 }
                 return
             }
@@ -42,10 +43,11 @@ public func signup (data: [String:String], callback: (()-> Void)?, callback_erro
     Alamofire.request(.POST,url , parameters: ["username":data["username"]!, "password" : data["password"]!], encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
             guard response.result.isSuccess else {
-                print(" RESPONSE ERROR: \(response.result.error?.code)")
-                
-                if callback_error != nil{
-                    callback_error!()
+                print("Error \(response.response?.statusCode)")
+                if ((response.response?.statusCode) != nil){
+                    if callback_error != nil{
+                        callback_error!()
+                    }
                 }
                 return
             }
@@ -69,8 +71,10 @@ public func getOrganizations (data: [String:AnyObject], callback: ((response : [
             guard response.result.isSuccess else {
                 
                 print("Error \(response.response?.statusCode)")
-                if callback_error != nil{
-                    callback_error!(code: (response.response?.statusCode)!)
+                if ((response.response?.statusCode) != nil){
+                    if callback_error != nil{
+                        callback_error!(code: (response.response?.statusCode)!)
+                    }
                 }
                 return
             }
@@ -129,8 +133,10 @@ public func createCredentials (data: [String:AnyObject], callback: ((response : 
             guard response.result.isSuccess else {
                 
                 print("Error \(response.response?.statusCode)")
-                if callback_error != nil{
-                    callback_error!(code: (response.response?.statusCode)!)
+                if ((response.response?.statusCode) != nil){
+                    if callback_error != nil{
+                        callback_error!(code: (response.response?.statusCode)!)
+                    }
                 }
                 return
             }
