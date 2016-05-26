@@ -8,9 +8,10 @@
 
 import UIKit
 import Foundation
+import SocketRocket
 
-class CredentialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+class CredentialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,SRWebSocketDelegate {
+   
     var bank : [String:AnyObject?]! = nil
     var siteId : String!
     
@@ -35,14 +36,14 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
             "id_site": site![0]["id_site"]!!,
             "token": NSUserDefaults.standardUserDefaults().objectForKey("token")!,
             "credentials": credentialsString        ]
+       
         
-        print(data)
-        
-        createCredentials(data, callback: nil, callback_error: callback_error)
+        createCredentials(data, callback: callback, callback_error: callback_error)
     }
    
     func callback(response: [String:AnyObject])->Void{
-        print(response)
+        print("Response callback\(response["response"])")
+        connectWebSocket(response["response"]!["ws"] as! String)
         
     }
     
@@ -58,6 +59,54 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
     }
+    
+    /*
+    - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
+    webSocket = newWebSocket;
+    [webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
+    }
+    
+    - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+    [self connectWebSocket];
+    }
+    
+    - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+    [self connectWebSocket];
+    }
+*/
+    
+    func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
+        
+        print("MESSAGE: \(message)")
+    }
+
+    
+    
+    
+    
+    
+    func connectWebSocket (urlSocket:String?){
+        if urlSocket != nil {
+            print("Init Socket: \(urlSocket)")
+            //webSocket.delegate = nil;
+            //webSocket = nil;
+            
+            var newWebSocket = SRWebSocket(URL: NSURL(string: urlSocket!))
+            
+            newWebSocket.delegate = self;
+            newWebSocket.open()
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return credentials.count

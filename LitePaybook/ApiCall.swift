@@ -115,8 +115,6 @@ public func validateSession (token: String, callback: ((response : [String:AnyOb
                 }
                 
             }
-
-            print("validate \(response.result.value)")
             
     }
     
@@ -127,7 +125,7 @@ public func validateSession (token: String, callback: ((response : [String:AnyOb
 public func createCredentials (data: [String:AnyObject], callback: ((response : [String:AnyObject])-> Void)?, callback_error: ((code: Int)-> Void)?){
     
     let url = "https://sync.paybook.com/v1/credentials"
-    print(data)
+
     Alamofire.request(.POST,url , parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
         .responseJSON { (response) -> Void in
             guard response.result.isSuccess else {
@@ -141,14 +139,15 @@ public func createCredentials (data: [String:AnyObject], callback: ((response : 
                 return
             }
             
-            /*
+            
             if let responseObj = response.result.value as? [String: AnyObject]{
-                callback(response: responseObj)
+                if callback != nil{
+                    callback!(response: responseObj)
+                }
             }
-            */
-            print("Response: \(response)")
+            
             print("Value: \(response.result.value)")
-            print("Desc: \(response.result.description)")
+            
             
     }
     
