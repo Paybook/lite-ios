@@ -21,6 +21,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var credentialCollectionView: UICollectionView!
     
+    @IBOutlet weak var processingView: UIView!
     @IBAction func cancelFunc(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -60,27 +61,104 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
-    /*
-    - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
-    webSocket = newWebSocket;
-    [webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
+    func setProcessing(){
+        print("Processing")
+        processingView.hidden = false
     }
     
-    - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
-    [self connectWebSocket];
+    func setError(desc: String?){
+        
+        let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
+        statusAlert.status = [
+            "title":"Problema de conexión.",
+            "success": false,
+            "desc": desc
+        ]
+        self.navigationController?.pushViewController(statusAlert, animated: false)
     }
     
-    - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
-    [self connectWebSocket];
+    func setFinished(desc:String){
+        print("Success \(desc)")
+        
+        let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
+        statusAlert.status = [
+            "title":"La institución fue procesada correctamente.",
+            "success": true,
+            "desc": "El sistema continúa trabajando en extraer la información necesaria."
+        ]
+        self.navigationController?.pushViewController(statusAlert, animated: false)
     }
-*/
     
     func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
+        let code = message as? String
         
-        print("MESSAGE: \(message)")
+        //print("MESSAGE: \(message)  code: \(code?.values)")
+        if let data = code!.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                let status = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+                if let statusCode = status!["code"] as? Int{
+                        print(statusCode)
+                    switch (statusCode){
+                    case 100,101,102,103,104,105 :
+                        setProcessing();
+                        break
+                    case 200,201:
+                        setFinished("La institución fue procesada correctamente. El sistema continúa trabajando en extraer la información necesaria.");
+                        webSocket.close()
+                        break
+                    case 301,401,402,403:
+                        setError("Credenciales incorrectas. Por favor, vuelva a intentarlo.");
+                        //invalid credentials
+                        webSocket.close()
+                        break
+                    case 405:
+                        setError("Su cuenta está bloqueada. Por favor vaya a la página web de su banco.");
+                        //account locked, show message
+                        webSocket.close()
+                        break
+                    case 406:
+                        //user already logged in
+                        setError("El usuario ya se encuentra conectado. Por favor, desconéctese de su banco si está conectado, vuelva a intentarlo pasados unos minutos.");
+                        webSocket.close()
+                        break
+                    case 410:
+                        //setExtraCredentials(response.twofa);
+                        webSocket.close()
+                        break
+                    case 411:
+                        //request timeout user info
+                        setError("Pasó el tiempo máximo de espera para introducir esa información. Por favor, vuelva a intentarlo.");
+                        webSocket.close()
+                        break
+                    case 500,501,502,503,504,505:
+                        //non user error, just notify to retry later
+                        setError("Error del sistema. Por favor, vuelva a intentarlo pasados unos minutos.");
+                        webSocket.close()
+                        break;
+                    default:
+                        //console.log(code);
+                        setError("Error desconocido, por favor vuelva a intentarlo.");
+                        webSocket.close()
+                        break
+                    }
+                    
+                }
+                
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        
     }
 
+    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
+        print("Error : \(error)")
+    }
     
+    func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        print("Close: \(code), reason: \(reason), was clean:\(wasClean)")
+        processingView.hidden = true
+    }
     
     
     
@@ -88,13 +166,12 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     func connectWebSocket (urlSocket:String?){
         if urlSocket != nil {
             print("Init Socket: \(urlSocket)")
-            //webSocket.delegate = nil;
-            //webSocket = nil;
-            
             var newWebSocket = SRWebSocket(URL: NSURL(string: urlSocket!))
             
             newWebSocket.delegate = self;
             newWebSocket.open()
+            
+ 
         }
         
         
