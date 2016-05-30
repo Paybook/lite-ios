@@ -19,7 +19,16 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var data = [
+            "token" : NSUserDefaults.standardUserDefaults().objectForKey("token")!
+        ]
+        
+        getAccount(data, callback: {(response) in
+                print("Get Account: \(response)")
+            }, callback_error: {(error_code) in
+                print("Error: \(error_code)")
+        })
         // Do any additional setup after loading the view.
     }
 

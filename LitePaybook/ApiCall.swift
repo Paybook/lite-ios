@@ -153,3 +153,36 @@ public func createCredentials (data: [String:AnyObject], callback: ((response : 
     
     
 }
+
+public func getAccount (data: [String:AnyObject], callback: ((response : [String:AnyObject])-> Void)?, callback_error: ((code: Int)-> Void)?){
+    
+    let url = "https://sync.paybook.com/v1/accounts"
+    
+    Alamofire.request(.GET,url , parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).validate()
+        .responseJSON { (response) -> Void in
+            guard response.result.isSuccess else {
+                
+                print("Error \(response.response?.statusCode)")
+                if ((response.response?.statusCode) != nil){
+                    if callback_error != nil{
+                        callback_error!(code: (response.response?.statusCode)!)
+                    }
+                }
+                return
+            }
+            
+            
+            if let responseObj = response.result.value as? [String: AnyObject]{
+                if callback != nil{
+                    callback!(response: responseObj)
+                }
+            }
+            
+            print("Value: \(response.result.value)")
+            
+            
+    }
+    
+    
+}
+

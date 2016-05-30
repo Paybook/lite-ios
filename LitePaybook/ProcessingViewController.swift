@@ -15,7 +15,7 @@ class ProcessingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //showAlert()
         // Do any additional setup after loading the view.
     }
 
@@ -23,16 +23,43 @@ class ProcessingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    override func viewDidAppear(animated: Bool) {
-        loaderImage.rotate360Degrees()
-        print("Animateing")
-        //UIView.ani
+    
+   
+    func showAlert(){
+        print("animate")
+        self.loaderImage.rotate360Degrees()
+        /*
+        self.view.hidden = false
+        let duration = 2.0
+        let delay = 0.0
+        let options = UIViewKeyframeAnimationOptions.CalculationModePaced
+        let fullRotation = CGFloat(M_PI * 2)
+        
+        UIView.animateKeyframesWithDuration(duration, delay: delay, options: options, animations: {
+            
+            // note that we've set relativeStartTime and relativeDuration to zero.
+            // Because we're using `CalculationModePaced` these values are ignored
+            // and iOS figures out values that are needed to create a smooth constant transition
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
+                self.loaderImage.transform = CGAffineTransformMakeRotation(1/3 * fullRotation)
+            })
+            
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
+                self.loaderImage.transform = CGAffineTransformMakeRotation(2/3 * fullRotation)
+            })
+            
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
+                self.loaderImage.transform = CGAffineTransformMakeRotation(3/3 * fullRotation)
+            })
+            
+            }, completion: nil)
+        print("Animateing")*/
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        loaderImage.stopAnimating()
+    func hideAlert(){
+        
     }
+   
     
 }
 

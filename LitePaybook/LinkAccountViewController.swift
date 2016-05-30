@@ -131,6 +131,29 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                 break
             case "entities":
                 bank = entitiesData[indexPath.row]
+                if let avatarImage =  bank["avatar"] as? String{
+                    let url = NSURL(string: url_images + avatarImage)
+                    
+                    // For recycled cells' late image loads.
+                    if let image = url!.cachedImage {
+                        // Cached: set immediately.
+                        cell.bankImageView!.image = image
+                        
+                    } else {
+                        // Not cached, so load then fade it in.
+                        
+                        url!.fetchImage { image in
+                            // Check the cell hasn't recycled while loading.
+                            /*if self.imageUrl == url {
+                             cell.bankImageView!.image = image
+                             }*/
+                            cell.bankImageView!.image = image
+                        }
+                    }
+                    
+                }
+
+                
                 cell.nameLabel.text = nil
             break
             case "sites":
@@ -195,6 +218,15 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
 
             break
         case "entities":
+            var entitieSelected = entitiesData[indexPath.row]
+            print("Selected: \(entitieSelected)")
+            let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+            
+            nextStep.bank = entitieSelected//["sites"] as? [String:AnyObject?]
+            
+            var site = entitieSelected["sites"] as? NSArray
+            nextStep.siteId = site![0]["id_site"] as? String
+            self.navigationController?.pushViewController(nextStep, animated: true)
             
             break
         case "sites":

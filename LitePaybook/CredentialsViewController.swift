@@ -64,6 +64,8 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     func setProcessing(){
         print("Processing")
         processingView.hidden = false
+        
+        
     }
     
     func setError(desc: String?){

@@ -642,16 +642,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKk-SS-uIr">
-                                <rect key="frame" x="264" y="118" width="73" height="30"/>
-                                <state key="normal" title="Log out"/>
+                                <rect key="frame" x="264" y="185" width="73" height="30"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" red="0.12941176469999999" green="0.1450980392" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="logOutButton:" destination="w62-MR-ems" eventType="touchUpInside" id="RBe-pm-ecM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This section is in process..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uq-nx-2fW">
+                                <rect key="frame" x="192" y="150" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="RKk-SS-uIr" firstAttribute="centerX" secondItem="9c7-wy-Rec" secondAttribute="centerX" id="Hem-LZ-pr6"/>
+                            <constraint firstItem="4uq-nx-2fW" firstAttribute="centerX" secondItem="9c7-wy-Rec" secondAttribute="centerX" id="PDU-yt-AHd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" id="gMg-hS-KQt"/>
@@ -673,6 +682,7 @@
                     <connections>
                         <segue destination="w62-MR-ems" kind="relationship" relationship="viewControllers" id="28v-gh-m7f"/>
                         <segue destination="7uZ-OU-ygs" kind="relationship" relationship="viewControllers" id="Eew-r2-s60"/>
+                        <segue destination="Ufz-xg-xVM" kind="relationship" relationship="viewControllers" id="wsl-gC-zko"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hg8-9a-jQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -852,10 +862,44 @@
             </objects>
             <point key="canvasLocation" x="2655" y="466"/>
         </scene>
+        <!--Transactions-->
+        <scene sceneID="RKd-Ft-Epm">
+            <objects>
+                <viewController id="Ufz-xg-xVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Weh-im-S5z"/>
+                        <viewControllerLayoutGuide type="bottom" id="OyJ-ac-x6r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bIc-Bv-6no">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This section is in process..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ene-yd-868">
+                                <rect key="frame" x="192" y="150" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ene-yd-868" firstAttribute="centerX" secondItem="bIc-Bv-6no" secondAttribute="centerX" id="Urw-Qb-9ct"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Transactions" image="transaction-icon" id="RM9-2n-ro0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lg-0z-tnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2655" y="1182"/>
+        </scene>
         <!--Processing View Controller-->
         <scene sceneID="8np-CS-gCj">
             <objects>
                 <viewController id="DoL-lm-qbB" customClass="ProcessingViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WXp-d7-aXi"/>
+                        <viewControllerLayoutGuide type="bottom" id="HbA-9Z-xuS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VAm-cY-LtS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -895,5 +939,6 @@
         <image name="accountIcon" width="30" height="30"/>
         <image name="settingsIcon" width="30" height="30"/>
         <image name="spin-loader" width="60" height="60"/>
+        <image name="transaction-icon" width="30" height="30"/>
     </resources>
 </document>
