@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import Paybook
+
 
 class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+    /*
     var banksData = [[String: AnyObject]]()
     var entitiesData = [[String: AnyObject]]()
     var sitesData = [[String: AnyObject]]()
-    var bankSelected = [String: AnyObject]()
+    var bankSelected = [String: AnyObject]()*/
+    
+    
+    var banksData = [Site_organization]()
+    var entitiesData = [Site_organization]()
+    var sitesData = [Site]()
+    var bankSelected : Site_organization!
+    
     var currentType = "banks"    //("banks"/"entities"/"sites")
     
     
@@ -29,7 +38,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.reloadData()
     }
   
-    
+    /*
     func sortOrganizations(response: [String:AnyObject])->Void{
         // Cast response to Array
         let bankarray = response["response"] as! [[String: AnyObject]]
@@ -52,7 +61,29 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.reloadData()
         
         
+    }*/
+    
+    
+    
+    func sortOrganizations(organizations: [Site_organization])->Void{
+        
+        for item in organizations{
+            
+            switch item.id_site_organization_type{
+            case "56cf4f5b784806cf028b4568" :
+                banksData.append(item)
+                break
+            case "56cf4f5b784806cf028b4569" :
+                entitiesData.append(item)
+                break
+            default :
+                break
+                
+            }
+        }
+        
     }
+    
     
     func callback_error(code: Int){
         switch code{
@@ -73,8 +104,15 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let data = ["token": NSUserDefaults.standardUserDefaults().objectForKey("token")!]
         
-        getOrganizations(data, callback: sortOrganizations, callback_error: callback_error)
-        
+        //getOrganizations(data, callback: sortOrganizations, callback_error: callback_error)
+        Catalogues.get_site_organizations(currentSession, id_user: nil){
+            response, error in
+            if response != nil{
+                
+                
+                
+            }
+        }
         
     }
     
@@ -102,12 +140,12 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("bankCell", forIndexPath: indexPath) as! BankCell
         
         
-        var bank = [String:AnyObject]()
+        var bank : Site_organization
         
         switch currentType {
-            case "banks":
+            case "banks":  //[Site_organization] Bancos
                 bank = banksData[indexPath.row]
-                if let avatarImage =  bank["avatar"] as? String{
+                if let avatarImage =  bank.avatar{
                     let url = NSURL(string: url_images + avatarImage)
                     print(url_images + avatarImage)
                     // For recycled cells' late image loads.
@@ -129,9 +167,9 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
                 cell.nameLabel.text = nil
                 break
-            case "entities":
+            case "entities": //[Site_organization] entidades SAT
                 bank = entitiesData[indexPath.row]
-                if let avatarImage =  bank["avatar"] as? String{
+                if let avatarImage =  bank.avatar{
                     let url = NSURL(string: url_images + avatarImage)
                     
                     // For recycled cells' late image loads.
@@ -156,9 +194,9 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                 
                 cell.nameLabel.text = nil
             break
-            case "sites":
-                bank = sitesData[indexPath.row]
-                if let avatarImage =  bankSelected["avatar"] as? String{
+            case "sites":   //[Site] tipos de cuentas bancarias
+                let site = sitesData[indexPath.row]
+                if let avatarImage =  bankSelected.avatar{
                     let url = NSURL(string: url_images + avatarImage)
                    
                     // For recycled cells' late image loads.
@@ -179,7 +217,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     }
                     
                 }
-                cell.nameLabel.text = bank["name"] as? String
+                cell.nameLabel.text = site.name
                 break
             default:
                 break
@@ -190,11 +228,11 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        /*
         switch currentType {
         case "banks":
             bankSelected = banksData[indexPath.row]
-            if let sites = bankSelected["sites"] as? NSArray {
+            if let sites = bankSelected as? NSArray {
                 //check if have two o more diferent types account
                 if sites.count > 1{
                     //Display types accounts
@@ -241,7 +279,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         default:
             break
         }
-        
+        */
         
         
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */; };
 		1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426DAC11CEC32B60068A442 /* SettingsViewController.swift */; };
+		1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */; };
 		1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */; };
 		14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D311CEF77B80073302B /* CredentialsViewController.swift */; };
 		14860D341CEF82BE0073302B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D331CEF82BE0073302B /* Config.swift */; };
@@ -21,7 +22,6 @@
 		14ABC4EA1CE39775006AAC2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E81CE39775006AAC2F /* LaunchScreen.storyboard */; };
 		14ABC4F51CE39775006AAC2F /* LitePaybookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4F41CE39775006AAC2F /* LitePaybookTests.swift */; };
 		14ABC5001CE39775006AAC2F /* LitePaybookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4FF1CE39775006AAC2F /* LitePaybookUITests.swift */; };
-		14ABC50E1CE3A19C006AAC2F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC50D1CE3A19C006AAC2F /* LogInViewController.swift */; };
 		14ABC5321CE4363D006AAC2F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC5301CE4363D006AAC2F /* LICENSE */; };
 		14ABC5331CE4363D006AAC2F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC5311CE4363D006AAC2F /* README.md */; };
 		14BF43391CE6824800C45D64 /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF43381CE6824800C45D64 /* BankCell.swift */; };
@@ -29,6 +29,7 @@
 		14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */; };
 		14C2F57F1CEA343E008F3055 /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2F57E1CEA343E008F3055 /* ApiCall.swift */; };
 		14D1999D1CF7AD2E00A57EA1 /* StatusAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */; };
+		14ED412D1D3EE41B002E93C0 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */; };
 		C3D11508D1E3C795D1B85BAE /* Pods_LitePaybook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0B36E378D4EDF87A8433CF /* Pods_LitePaybook.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		1426DAC11CEC32B60068A442 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
 		14860D311CEF77B80073302B /* CredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
 		14860D331CEF82BE0073302B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 		14ABC4FB1CE39775006AAC2F /* LitePaybookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LitePaybookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14ABC4FF1CE39775006AAC2F /* LitePaybookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LitePaybookUITests.swift; sourceTree = "<group>"; };
 		14ABC5011CE39775006AAC2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14ABC50D1CE3A19C006AAC2F /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		14ABC52D1CE3C669006AAC2F /* LitePaybook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LitePaybook-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		14ABC5301CE4363D006AAC2F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		14ABC5311CE4363D006AAC2F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		14C2F57E1CEA343E008F3055 /* ApiCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
 		14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusAlertViewController.swift; sourceTree = "<group>"; };
+		14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1F0B36E378D4EDF87A8433CF /* Pods_LitePaybook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LitePaybook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D4FD635243272933D6EEF0 /* Pods-LitePaybook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LitePaybook.release.xcconfig"; path = "Pods/Target Support Files/Pods-LitePaybook/Pods-LitePaybook.release.xcconfig"; sourceTree = "<group>"; };
 		F8F7397432A26BED8ABF2BC2 /* Pods-LitePaybook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LitePaybook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LitePaybook/Pods-LitePaybook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,11 +142,11 @@
 				14ABC5121CE3A25F006AAC2F /* Controllers */,
 				14ABC5111CE3A24D006AAC2F /* Config */,
 				14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */,
-				1426DAC11CEC32B60068A442 /* SettingsViewController.swift */,
 				14C2F57E1CEA343E008F3055 /* ApiCall.swift */,
 				14860D351CEF83370073302B /* ImageCache.swift */,
 				14ABC4E61CE39775006AAC2F /* Assets.xcassets */,
 				14ABC4E01CE39774006AAC2F /* Main.storyboard */,
+				1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */,
 				1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */,
 				14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */,
 				14ABC4E81CE39775006AAC2F /* LaunchScreen.storyboard */,
@@ -185,9 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */,
-				14ABC50D1CE3A19C006AAC2F /* LogInViewController.swift */,
+				14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */,
 				14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */,
 				14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */,
+				1426DAC11CEC32B60068A442 /* SettingsViewController.swift */,
 				14860D311CEF77B80073302B /* CredentialsViewController.swift */,
 				14860D391CEFC5E90073302B /* CredentialCell.swift */,
 				14BF43381CE6824800C45D64 /* BankCell.swift */,
@@ -219,12 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14ABC5041CE39775006AAC2F /* Build configuration list for PBXNativeTarget "LitePaybook" */;
 			buildPhases = (
-				3FBE260E341AFCD9EBCA639C /* 📦 Check Pods Manifest.lock */,
+				3FBE260E341AFCD9EBCA639C /* [CP] Check Pods Manifest.lock */,
 				14ABC4D51CE39773006AAC2F /* Sources */,
 				14ABC4D61CE39773006AAC2F /* Frameworks */,
 				14ABC4D71CE39773006AAC2F /* Resources */,
-				7F1D2F2CC2C5BD077226AF28 /* 📦 Embed Pods Frameworks */,
-				77AC6B7C83F0A1DDA6FD4F1F /* 📦 Copy Pods Resources */,
+				7F1D2F2CC2C5BD077226AF28 /* [CP] Embed Pods Frameworks */,
+				77AC6B7C83F0A1DDA6FD4F1F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,14 +346,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3FBE260E341AFCD9EBCA639C /* 📦 Check Pods Manifest.lock */ = {
+		3FBE260E341AFCD9EBCA639C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,14 +361,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		77AC6B7C83F0A1DDA6FD4F1F /* 📦 Copy Pods Resources */ = {
+		77AC6B7C83F0A1DDA6FD4F1F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,14 +376,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LitePaybook/Pods-LitePaybook-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F1D2F2CC2C5BD077226AF28 /* 📦 Embed Pods Frameworks */ = {
+		7F1D2F2CC2C5BD077226AF28 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,11 +400,12 @@
 			files = (
 				14C2F57F1CEA343E008F3055 /* ApiCall.swift in Sources */,
 				14D1999D1CF7AD2E00A57EA1 /* StatusAlertViewController.swift in Sources */,
+				1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */,
 				14860D361CEF83370073302B /* ImageCache.swift in Sources */,
-				14ABC50E1CE3A19C006AAC2F /* LogInViewController.swift in Sources */,
 				14ABC5331CE4363D006AAC2F /* README.md in Sources */,
 				1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */,
 				14BF43391CE6824800C45D64 /* BankCell.swift in Sources */,
+				14ED412D1D3EE41B002E93C0 /* SignInViewController.swift in Sources */,
 				14BF433B1CE6833C00C45D64 /* LinkAccountViewController.swift in Sources */,
 				14860D341CEF82BE0073302B /* Config.swift in Sources */,
 				14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */,

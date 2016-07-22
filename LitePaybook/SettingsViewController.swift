@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Paybook
 
 class SettingsViewController: UIViewController {
     @IBAction func logOutButton(sender: AnyObject) {
@@ -24,11 +25,19 @@ class SettingsViewController: UIViewController {
             "token" : NSUserDefaults.standardUserDefaults().objectForKey("token")!
         ]
         
-        getAccount(data, callback: {(response) in
-                print("Get Account: \(response)")
-            }, callback_error: {(error_code) in
-                print("Error: \(error_code)")
-        })
+        
+        Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: "5731fb37784806a6118b4568", is_test: nil){
+                response, error in
+            if response != nil{
+                for site in response! {
+                    print(site.name, site.credentials)
+                }
+            }else{
+                
+                print("Error Sites", error?.message)
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Paybook
+
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -32,7 +34,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         //
         
         if emailTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
-            
+            /*
             if isValidEmail(emailTextField.text!){
                 if passwordTextField.text == confirmPasswordTextField.text{
                     warningLabel.hidden = true
@@ -43,6 +45,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             }else{
                 warningLabel.text = "your email is not valid"
+                warningLabel.hidden = false
+            }
+            */
+            
+            if passwordTextField.text == confirmPasswordTextField.text{
+                warningLabel.hidden = true
+                return true
+            }else{
+                warningLabel.text = "confirm your password"
                 warningLabel.hidden = false
             }
             
@@ -62,9 +73,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUp(sender: AnyObject) {
         if checkCredentials(){
-            let data = ["username": emailTextField.text!, "password": passwordTextField.text!]
-            signup(data, callback: {self.openLogIn()}, callback_error: {print("Sign up Error")})
-            
+            _ = User(username: emailTextField.text!, id_user: nil, completionHandler: {
+                user, error in
+                if user != nil{
+                    print(user?.name)
+                    self.openLogIn()
+                }else{
+                    print("Sign up Error: \(error?.message)")
+                    self.warningLabel.text = "Sign up Error"
+                    self.warningLabel.hidden = false
+                }
+            })
         }
     }
     
