@@ -11,12 +11,7 @@ import Paybook
 
 
 class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    /*
-    var banksData = [[String: AnyObject]]()
-    var entitiesData = [[String: AnyObject]]()
-    var sitesData = [[String: AnyObject]]()
-    var bankSelected = [String: AnyObject]()*/
-    
+
     
     var banksData = [Site_organization]()
     var entitiesData = [Site_organization]()
@@ -38,35 +33,11 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.reloadData()
     }
   
-    /*
-    func sortOrganizations(response: [String:AnyObject])->Void{
-        // Cast response to Array
-        let bankarray = response["response"] as! [[String: AnyObject]]
-        
-        for item in bankarray{
-            
-            switch item["id_site_organization_type"] as! String{
-            case "56cf4f5b784806cf028b4568" :
-                banksData.append(item)
-                break
-            case "56cf4f5b784806cf028b4569" :
-                entitiesData.append(item)
-                break
-            default :
-                break
-                
-            }
-        }
-        
-        collectionView.reloadData()
-        
-        
-    }*/
-    
+
     
     
     func sortOrganizations(organizations: [Site_organization])->Void{
-        
+        print("sort Organization \(organizations)")
         for item in organizations{
             
             switch item.id_site_organization_type{
@@ -82,6 +53,8 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
         
+        
+        collectionView.reloadData()
     }
     
     
@@ -100,16 +73,11 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("token:\(NSUserDefaults.standardUserDefaults().objectForKey("token")!)")
         
-        let data = ["token": NSUserDefaults.standardUserDefaults().objectForKey("token")!]
-        
-        //getOrganizations(data, callback: sortOrganizations, callback_error: callback_error)
         Catalogues.get_site_organizations(currentSession, id_user: nil){
             response, error in
             if response != nil{
-                
-                
+                self.sortOrganizations(response!)
                 
             }
         }
@@ -228,58 +196,84 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        /*
+        print("selected")
         switch currentType {
         case "banks":
             bankSelected = banksData[indexPath.row]
-            if let sites = bankSelected as? NSArray {
-                //check if have two o more diferent types account
-                if sites.count > 1{
-                    //Display types accounts
-                    sitesData = sites as! [[String : AnyObject]]
-                    currentType = "sites"
-                    collectionView.reloadData()
+            
+            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: bankSelected.id_site_organization, is_test: isTest){
+                response, error in
+                if response != nil {
+                    
+                    if response!.count > 1{
+                        //Cargar opciones de cuenta
+                        self.sitesData = response!
+                        self.currentType = "sites"
+                        collectionView.reloadData()
+                    }else{
+                        //Pasar a enviar credenciales
+                        let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+                        
+                        nextStep.bank = self.bankSelected//["sites"] as? [String:AnyObject?]
+                        
+                        let site = response![0]
+                        nextStep.siteId = site.id_site
+                        nextStep.site = site
+                        self.navigationController?.pushViewController(nextStep, animated: true)
+                    }
+                    
                 }else{
-                    //open credentials view
-                    print(bankSelected["name"]!)
-                    let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+                    //Fail
                     
-                    nextStep.bank = bankSelected//["sites"] as? [String:AnyObject?]
-                    
-                    var site = bankSelected["sites"] as? NSArray
-                    nextStep.siteId = site![0]["id_site"] as? String
-                    self.navigationController?.pushViewController(nextStep, animated: true)
-                    print("opened")
                 }
-                
             }
-
             break
         case "entities":
-            var entitieSelected = entitiesData[indexPath.row]
-            print("Selected: \(entitieSelected)")
-            let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
             
-            nextStep.bank = entitieSelected//["sites"] as? [String:AnyObject?]
             
-            var site = entitieSelected["sites"] as? NSArray
-            nextStep.siteId = site![0]["id_site"] as? String
-            self.navigationController?.pushViewController(nextStep, animated: true)
+            
+            let entitieSelected = entitiesData[indexPath.row]
+            
+            
+            
+            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: entitieSelected.id_site_organization, is_test: isTest){
+                response, error in
+                if response != nil {
+                    //Pasar a enviar credenciales
+                    let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
+                    
+                    nextStep.bank = entitieSelected//["sites"] as? [String:AnyObject?]
+                    
+                    let site = response![0]
+                    nextStep.siteId = site.id_site
+                    nextStep.site = site
+                    self.navigationController?.pushViewController(nextStep, animated: true)
+                    
+                }else{
+                    //Fail
+                    
+                }
+            }
+
+            
             
             break
         case "sites":
-            var siteSelected = sitesData[indexPath.row]
+            //Pasar a enviar credenciales
             let nextStep = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("credentialsViewController") as! CredentialsViewController
             
-            nextStep.bank = bankSelected//["sites"] as? [String:AnyObject?]
-            nextStep.siteId = siteSelected["id_site"] as? String
+            nextStep.bank = self.bankSelected//["sites"] as? [String:AnyObject?]
+            
+            let site = sitesData[indexPath.row]
+            nextStep.siteId = site.id_site
+            nextStep.site = site
             self.navigationController?.pushViewController(nextStep, animated: true)
-            print("opened")
             break
         default:
             break
         }
-        */
+
+        
         
         
     }

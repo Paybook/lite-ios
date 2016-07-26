@@ -246,8 +246,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foS-YT-bAv">
-                                                    <rect key="frame" x="8" y="63" width="72" height="37"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foS-YT-bAv">
+                                                    <rect key="frame" x="4" y="63" width="72" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -585,18 +585,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKk-SS-uIr">
-                                <rect key="frame" x="264" y="185" width="73" height="30"/>
+                                <rect key="frame" x="189" y="233" width="222" height="30"/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.62745098040000002" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log out">
-                                    <color key="titleColor" red="0.12941176469999999" green="0.1450980392" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logOutButton:" destination="w62-MR-ems" eventType="touchUpInside" id="RBe-pm-ecM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This section is in process..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uq-nx-2fW">
-                                <rect key="frame" x="192" y="150" width="216" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PyQ-yG-Lco">
+                                <rect key="frame" x="362" y="184" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaV-NU-Qvd">
+                                <rect key="frame" x="231" y="107" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="settingsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="EQW-te-5WX">
+                                <rect key="frame" x="277" y="59" width="40" height="40"/>
+                                <color key="tintColor" red="0.074509803920000006" green="0.62745098040000002" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="IX4-3z-bmf"/>
+                                    <constraint firstAttribute="height" constant="40" id="Mnz-DK-TR4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Test Enviroment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uq-nx-2fW">
+                                <rect key="frame" x="189" y="189" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -604,9 +627,15 @@
                         <constraints>
                             <constraint firstItem="RKk-SS-uIr" firstAttribute="centerX" secondItem="9c7-wy-Rec" secondAttribute="centerX" id="Hem-LZ-pr6"/>
                             <constraint firstItem="4uq-nx-2fW" firstAttribute="centerX" secondItem="9c7-wy-Rec" secondAttribute="centerX" id="PDU-yt-AHd"/>
+                            <constraint firstItem="PyQ-yG-Lco" firstAttribute="leading" secondItem="4uq-nx-2fW" secondAttribute="trailing" constant="-43" id="h1K-nz-15N"/>
+                            <constraint firstItem="GaV-NU-Qvd" firstAttribute="centerX" secondItem="9c7-wy-Rec" secondAttribute="centerX" id="lrj-wZ-WLd"/>
+                            <constraint firstItem="EQW-te-5WX" firstAttribute="centerX" secondItem="9c7-wy-Rec" secondAttribute="centerX" id="rW2-oZ-mwC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" id="gMg-hS-KQt"/>
+                    <connections>
+                        <outlet property="switchEnviroment" destination="PyQ-yG-Lco" id="lnz-I9-VlL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mhg-s8-ywL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

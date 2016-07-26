@@ -23,6 +23,8 @@ class IndexViewController: UIViewController {
             let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tabDashboard") as! UITabBarController
             self.presentViewController(dashboard, animated: true, completion: nil)
         }
+        
+        
         // Do any additional setup after loading the view.
     }
     

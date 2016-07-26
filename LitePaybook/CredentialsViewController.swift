@@ -9,10 +9,17 @@
 import UIKit
 import Foundation
 import SocketRocket
+import Paybook
+
 
 class CredentialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,SRWebSocketDelegate {
-   
+   /*
     var bank : [String:AnyObject?]! = nil
+    var siteId : String!
+   */
+    
+    var bank : Site_organization! = nil
+    var site : Site! = nil
     var siteId : String!
     
     var credentials = NSArray()
@@ -26,6 +33,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func continueFunc(sender: AnyObject) {
+        /*
         let arrayCredential = credentialCollectionView.visibleCells() as! [CredentialCell]
         var credentialsString = [String:String]()
         for i in arrayCredential{
@@ -39,7 +47,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
             "credentials": credentialsString        ]
        
         
-        createCredentials(data, callback: callback, callback_error: callback_error)
+        createCredentials(data, callback: callback, callback_error: callback_error)*/
     }
    
     func callback(response: [String:AnyObject])->Void{
@@ -205,6 +213,23 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         if bank != nil {
+            nameLabel.text = bank.name
+            if let coverImage = bank.cover{
+                let url = NSURL(string: url_images+coverImage )
+                url!.fetchImage { image in
+                    self.coverImageView.image = image
+                }
+                
+            }
+            
+            credentials = self.site!.credentials!
+            
+            
+            
+        }
+        
+        /*
+        if bank != nil {
             nameLabel.text = bank["name"] as? String
             if let coverImage = bank["cover"] as? String{
                 let url = NSURL(string: url_images+coverImage )
@@ -223,7 +248,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
             
             
            
-        }
+        }*/
         // Do any additional setup after loading the view.
     }
 
