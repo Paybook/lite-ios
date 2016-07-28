@@ -11,8 +11,6 @@ import Paybook
 
 class SettingsViewController: UIViewController {
     
-    
-    
     @IBOutlet weak var switchEnviroment: UISwitch!
     
     
@@ -28,38 +26,34 @@ class SettingsViewController: UIViewController {
     
     
     func changeEnviroment(sender: UISwitch){
-        /*
+        
         if switchEnviroment.on {
             isTest = true
         } else {
             isTest = false
-        }*/
+        }
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
+        
         if isTest{
             switchEnviroment.setOn(true, animated: false)
         }else{
             switchEnviroment.setOn(false, animated: false)
-        }*/
+        }
+        
+        
+        if self.revealViewController() != nil{
+           
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         
         switchEnviroment.addTarget(self, action: #selector(changeEnviroment), forControlEvents: .ValueChanged)
         
-        Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: "5731fb37784806a6118b4568", is_test: nil){
-                response, error in
-            if response != nil{
-                for site in response! {
-                    print(site.name, site.credentials)
-                }
-            }else{
-                
-                print("Error Sites", error?.message)
-            }
-        }
+        
         
         // Do any additional setup after loading the view.
     }

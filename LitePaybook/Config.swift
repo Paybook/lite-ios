@@ -15,3 +15,5 @@ let url_images : String = "https://s.paybook.com"
 
 var currentSession : Session!
 var isTest : Bool = false
+
+

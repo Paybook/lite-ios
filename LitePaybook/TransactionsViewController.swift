@@ -34,6 +34,12 @@ class TransactionsViewController: UIViewController, UITableViewDataSource,UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.revealViewController() != nil{
+            
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
         Transaction.get(currentSession, id_user: nil){
             response , error in
             

@@ -1,18 +1,16 @@
 //
-//  CredentialsViewController.swift
+//  TwofaViewController.swift
 //  LitePaybook
 //
-//  Created by Gabriel Villarreal on 20/05/16.
+//  Created by Gabriel Villarreal on 28/07/16.
 //  Copyright © 2016 Gabriel Villarreal. All rights reserved.
 //
 
 import UIKit
-import Foundation
 import Paybook
 
+class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-class CredentialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-   
     var bank : Site_organization! = nil
     var site : Site! = nil
     var siteId : String!
@@ -57,9 +55,9 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
             
             
         }
-        //createCredentials(data, callback: callback, callback_error: callback_error)*/
+        
     }
-   
+    
     
     
     func checkStatus(){
@@ -123,7 +121,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         })
         
     }
-
+    
     
     
     
@@ -210,34 +208,34 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
         /*
-        if bank != nil {
-            nameLabel.text = bank["name"] as? String
-            if let coverImage = bank["cover"] as? String{
-                let url = NSURL(string: url_images+coverImage )
-                url!.fetchImage { image in
-                    self.coverImageView.image = image
-                }
-
-            }
-            if let sites = bank["sites"] as? NSArray{
-                for i in sites{
-                    if i["id_site"] as? String == self.siteId{
-                        credentials = (i["credentials"] as? NSArray)!
-                    }
-                }
-            }
-            
-            
-           
-        }*/
+         if bank != nil {
+         nameLabel.text = bank["name"] as? String
+         if let coverImage = bank["cover"] as? String{
+         let url = NSURL(string: url_images+coverImage )
+         url!.fetchImage { image in
+         self.coverImageView.image = image
+         }
+         
+         }
+         if let sites = bank["sites"] as? NSArray{
+         for i in sites{
+         if i["id_site"] as? String == self.siteId{
+         credentials = (i["credentials"] as? NSArray)!
+         }
+         }
+         }
+         
+         
+         
+         }*/
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 
 }

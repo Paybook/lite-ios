@@ -23,11 +23,13 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var servicesButton: UIButton!
     @IBAction func changeServices(sender: AnyObject) {
         currentType = "entities"
         collectionView.reloadData()
     }
     
+    @IBOutlet weak var banksButton: UIButton!
     @IBAction func changeBanks(sender: AnyObject) {
         currentType = "banks"
         collectionView.reloadData()
@@ -58,31 +60,8 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     
-    func callback_error(code: Int){
-        switch code{
-        case 401:
-            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
-            let indexViewController = self.storyboard!.instantiateViewControllerWithIdentifier("index")
-            UIApplication.sharedApplication().keyWindow?.rootViewController = indexViewController
-            break
-        default :
-            break
-        }
-        
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        Catalogues.get_site_organizations(currentSession, id_user: nil){
-            response, error in
-            if response != nil{
-                self.sortOrganizations(response!)
-                
-            }
-        }
-        
-    }
+   
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
@@ -164,28 +143,38 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             break
             case "sites":   //[Site] tipos de cuentas bancarias
                 let site = sitesData[indexPath.row]
-                if let avatarImage =  bankSelected.avatar{
-                    let url = NSURL(string: url_images + avatarImage)
-                   
-                    // For recycled cells' late image loads.
-                    if let image = url!.cachedImage {
-                        // Cached: set immediately.
-                        cell.bankImageView!.image = image
+                
+                if isTest {
+                    let site = sitesData[indexPath.row]
+                    // Not cached, so load then fade it in.
+                    
+                    cell.nameLabel.text = site.name
+                    cell.nameLabel.hidden = false
+                }else{
+                    if let avatarImage =  bankSelected.avatar{
+                        let url = NSURL(string: url_images + avatarImage)
                         
-                    } else {
-                        // Not cached, so load then fade it in.
-                        
-                        url!.fetchImage { image in
-                            // Check the cell hasn't recycled while loading.
-                            /*if self.imageUrl == url {
-                             cell.bankImageView!.image = image
-                             }*/
+                        // For recycled cells' late image loads.
+                        if let image = url!.cachedImage {
+                            // Cached: set immediately.
                             cell.bankImageView!.image = image
+                            
+                        } else {
+                            // Not cached, so load then fade it in.
+                            
+                            url!.fetchImage { image in
+                                // Check the cell hasn't recycled while loading.
+                                /*if self.imageUrl == url {
+                                 cell.bankImageView!.image = image
+                                 }*/
+                                cell.bankImageView!.image = image
+                            }
                         }
+                        
                     }
+                    cell.nameLabel.text = site.name
                     
                 }
-                cell.nameLabel.text = site.name
                 break
             default:
                 break
@@ -196,12 +185,12 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("selected")
+        
         switch currentType {
         case "banks":
             bankSelected = banksData[indexPath.row]
-            
-            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: bankSelected.id_site_organization, is_test: isTest){
+            print("selected \(bankSelected.name)")
+            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: bankSelected.id_site_organization, is_test: nil){
                 response, error in
                 if response != nil {
                     
@@ -234,9 +223,9 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             
             let entitieSelected = entitiesData[indexPath.row]
             
+            print("selected \(entitieSelected.name)")
             
-            
-            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: entitieSelected.id_site_organization, is_test: isTest){
+            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: entitieSelected.id_site_organization, is_test: nil){
                 response, error in
                 if response != nil {
                     //Pasar a enviar credenciales
@@ -251,6 +240,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
                     
                 }else{
                     //Fail
+                    
                     
                 }
             }
@@ -267,6 +257,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             let site = sitesData[indexPath.row]
             nextStep.siteId = site.id_site
             nextStep.site = site
+            print("selected \(site.name)",site.credentials, site.id_site)
             self.navigationController?.pushViewController(nextStep, animated: true)
             break
         default:
@@ -274,6 +265,46 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         }
 
         
+        
+        
+    }
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if self.revealViewController() != nil{
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        
+        if isTest {
+            servicesButton.enabled = false
+            banksButton.enabled = false
+            Catalogues.get_sites(currentSession, id_user: nil, is_test: true){
+                response, error in
+                if response != nil {
+                    //Cargar sites de prueba
+                    self.sitesData = response!
+                    self.currentType = "sites"
+                    self.collectionView.reloadData()
+                }else{
+                    //Fail
+                    print("Error get_sites: ", error?.message)
+                }
+            }
+
+        }else{
+            Catalogues.get_site_organizations(currentSession, id_user: nil){
+                response, error in
+                if response != nil{
+                    self.sortOrganizations(response!)
+                    
+                }
+            }
+        }
         
         
     }

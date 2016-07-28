@@ -10,6 +10,8 @@
 		14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */; };
 		1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426DAC11CEC32B60068A442 /* SettingsViewController.swift */; };
 		1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */; };
+		14384B251D4A991B00B897C8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14384B241D4A991B00B897C8 /* SWRevealViewController.m */; };
+		14384B271D4AD06500B897C8 /* TwofaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14384B261D4AD06500B897C8 /* TwofaViewController.swift */; };
 		1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */; };
 		14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D311CEF77B80073302B /* CredentialsViewController.swift */; };
 		14860D341CEF82BE0073302B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D331CEF82BE0073302B /* Config.swift */; };
@@ -54,6 +56,9 @@
 		14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		1426DAC11CEC32B60068A442 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		14384B231D4A991B00B897C8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		14384B241D4A991B00B897C8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		14384B261D4AD06500B897C8 /* TwofaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwofaViewController.swift; sourceTree = "<group>"; };
 		1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
 		14860D311CEF77B80073302B /* CredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
 		14860D331CEF82BE0073302B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -112,9 +117,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14384B221D4A98FB00B897C8 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				14384B231D4A991B00B897C8 /* SWRevealViewController.h */,
+				14384B241D4A991B00B897C8 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		14ABC4D01CE39773006AAC2F = {
 			isa = PBXGroup;
 			children = (
+				14384B221D4A98FB00B897C8 /* SWRevealViewController */,
 				14ABC4DB1CE39774006AAC2F /* LitePaybook */,
 				14ABC4F31CE39775006AAC2F /* LitePaybookTests */,
 				14ABC4FE1CE39775006AAC2F /* LitePaybookUITests */,
@@ -146,6 +161,7 @@
 				14860D351CEF83370073302B /* ImageCache.swift */,
 				14ABC4E61CE39775006AAC2F /* Assets.xcassets */,
 				14ABC4E01CE39774006AAC2F /* Main.storyboard */,
+				14384B261D4AD06500B897C8 /* TwofaViewController.swift */,
 				1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */,
 				1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */,
 				14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */,
@@ -399,10 +415,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				14C2F57F1CEA343E008F3055 /* ApiCall.swift in Sources */,
+				14384B271D4AD06500B897C8 /* TwofaViewController.swift in Sources */,
 				14D1999D1CF7AD2E00A57EA1 /* StatusAlertViewController.swift in Sources */,
 				1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */,
 				14860D361CEF83370073302B /* ImageCache.swift in Sources */,
 				14ABC5331CE4363D006AAC2F /* README.md in Sources */,
+				14384B251D4A991B00B897C8 /* SWRevealViewController.m in Sources */,
 				1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */,
 				14BF43391CE6824800C45D64 /* BankCell.swift in Sources */,
 				14ED412D1D3EE41B002E93C0 /* SignInViewController.swift in Sources */,

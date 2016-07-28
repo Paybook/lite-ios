@@ -34,20 +34,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         //
         
         if emailTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
-            /*
-            if isValidEmail(emailTextField.text!){
-                if passwordTextField.text == confirmPasswordTextField.text{
-                    warningLabel.hidden = true
-                    return true
-                }else{
-                    warningLabel.text = "confirm your password"
-                    warningLabel.hidden = false
-                }
-            }else{
-                warningLabel.text = "your email is not valid"
-                warningLabel.hidden = false
-            }
-            */
+           
             
             if passwordTextField.text == confirmPasswordTextField.text{
                 warningLabel.hidden = true

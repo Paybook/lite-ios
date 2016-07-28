@@ -19,11 +19,29 @@ class IndexViewController: UIViewController {
         super.viewDidLoad()
         Paybook.api_key = api_key
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("token") != nil {
+        
+        if currentSession != nil{
+            
             let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tabDashboard") as! UITabBarController
             self.presentViewController(dashboard, animated: true, completion: nil)
+            
+            currentSession.validate(){
+                response, error in
+                if response != nil && response == true {
+                    print("Session validated")
+                }else{
+                    print("Session expired")
+                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
+                    currentSession = nil
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("indexViewController") as! IndexViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+            }
         }
         
+
         
         // Do any additional setup after loading the view.
     }

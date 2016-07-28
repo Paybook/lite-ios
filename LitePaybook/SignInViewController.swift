@@ -29,7 +29,33 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    @IBAction func DeleteUser(sender: AnyObject) {
+        if userSelected != nil{
+            User.delete(userSelected.id_user){
+                response, error in
+                if response != nil && response == true{
+                    print("User deleted")
+                    User.get(){
+                        response, error in
+                        if response != nil {
+                            self.users = response!
+                            print(self.users)
+                            self.tableView.reloadData()
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
     
+    @IBAction func Cancel(sender: AnyObject) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+        
+    }
     @IBOutlet weak var tableView: UITableView!
 
     
@@ -41,7 +67,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         defaults.setObject(session.token, forKey: "token")
         
-        let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tabDashboard") as! UITabBarController
+        let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DashboardViewController") as! SWRevealViewController
         self.presentViewController(dashboard, animated: true, completion: nil)
         
     }
