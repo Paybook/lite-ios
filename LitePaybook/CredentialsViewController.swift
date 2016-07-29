@@ -19,7 +19,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     var credential : Credentials!
     var credentials = NSArray()
     var timer : NSTimer!
-    
+    var sending : Bool = false
     
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -39,9 +39,10 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
         print(credentialsString)
+        sending = true
         _ = Credentials(session: currentSession, id_user: nil, id_site: site.id_site, credentials: credentialsString){
             response, error in
-            
+            self.sending = false
             if response != nil {
                 
                 
@@ -63,64 +64,73 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func checkStatus(){
-        
-        credential.get_status(currentSession, id_user: nil, completionHandler: {
-            response, error in
-            if response != nil{
-                
-                let status = response![response!.count-1]
-                
-                switch status["code"] as! Int{
-                case 100,101,102,103,104,105 :
-                    print("Processing...\(status["code"])")
-                    self.setProcessing();
-                    break
-                case 200,201,202,203:
-                    self.setFinished("La institución fue procesada correctamente. El sistema continúa trabajando en extraer la información necesaria.");
-                    print("Success...\(status["code"])")
-                    self.timer.invalidate()
-                    break
-                case 301,401,402,403:
-                    self.setError("Credenciales incorrectas. Por favor, vuelva a intentarlo.");
-                    print("User Error \(status["code"])")
-                    self.timer.invalidate()
-                case 405:
-                    self.setError("Su cuenta está bloqueada. Por favor vaya a la página web de su banco.");
-                    self.timer.invalidate()
-                case 406:
-                    //user already logged in
-                    self.setError("El usuario ya se encuentra conectado. Por favor, desconéctese de su banco si está conectado, vuelva a intentarlo pasados unos minutos.");
-                    self.timer.invalidate()
-                case 410:
-                    print("Waiting for two-fa \(status["code"])")
-                    print(status)
+        if sending == false {
+            sending = true
+            credential.get_status(currentSession, id_user: nil, completionHandler: {
+                response, error in
+                self.sending = false
+                if response != nil{
                     
+                    let status = response![response!.count-1]
                     
+                    switch status["code"] as! Int{
+                    case 100,101,102,103,104,105 :
+                        print("Processing...\(status["code"])")
+                        self.setProcessing();
+                        break
+                    case 200,201,202,203:
+                        self.setFinished("La institución fue procesada correctamente. El sistema continúa trabajando en extraer la información necesaria.");
+                        print("Success...\(status["code"])")
+                        self.timer.invalidate()
+                        break
+                    case 301,401,402,403:
+                        self.setError("Credenciales incorrectas. Por favor, vuelva a intentarlo.");
+                        print("User Error \(status["code"])")
+                        self.timer.invalidate()
+                    case 405:
+                        self.setError("Su cuenta está bloqueada. Por favor vaya a la página web de su banco.");
+                        self.timer.invalidate()
+                    case 406:
+                        //user already logged in
+                        self.setError("El usuario ya se encuentra conectado. Por favor, desconéctese de su banco si está conectado, vuelva a intentarlo pasados unos minutos.");
+                        self.timer.invalidate()
+                    case 410:
+                        print("Waiting for two-fa \(status["code"])")
+                        print(status)
+                        let twofaViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("twofaViewController") as! TwofaViewController
+                        
+                        twofaViewController.credential = self.credential
+                        twofaViewController.credentials = status["twofa"] as! NSArray
+                        self.navigationController?.pushViewController(twofaViewController, animated: true)
+                        
+                        
+                        
+                        
+                        self.timer.invalidate()
+                        break
+                    case 411:
+                        //request timeout user info
+                        self.setError("Pasó el tiempo máximo de espera para introducir esa información. Por favor, vuelva a intentarlo.");
+                        self.timer.invalidate()
+                    case 500,501,504,505:
+                        print("System Error \(status["code"])")
+                        self.setError("Error del sistema. Por favor, vuelva a intentarlo pasados unos minutos.");
+                        self.timer.invalidate()
+                        break
+                    default :
+                        self.setError("Error, por favor vuelva a intentarlo.");
+                        self.timer.invalidate()
+                        break
+                    }
+                }else{
+                    print("Fail: \(error?.message)")
                     
-                    
-                    self.timer.invalidate()
-                    break
-                case 411:
-                    //request timeout user info
-                    self.setError("Pasó el tiempo máximo de espera para introducir esa información. Por favor, vuelva a intentarlo.");
-                    self.timer.invalidate()
-                case 500,501,504,505:
-                    print("System Error \(status["code"])")
-                    self.setError("Error del sistema. Por favor, vuelva a intentarlo pasados unos minutos.");
-                    self.timer.invalidate()
-                    break
-                default :
-                    self.setError("Error, por favor vuelva a intentarlo.");
-                    self.timer.invalidate()
-                    break
                 }
-            }else{
-                print("Fail: \(error?.message)")
                 
-            }
+                
+            })
             
-            
-        })
+        }
         
     }
 

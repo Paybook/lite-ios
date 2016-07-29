@@ -37,24 +37,21 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         
         print(credentialsString)
-        _ = Credentials(session: currentSession, id_user: nil, id_site: site.id_site, credentials: credentialsString){
+        
+        
+        credential.set_twofa(currentSession, id_user: nil, params: credentialsString){
             response, error in
             
-            if response != nil {
+            if response != nil && response == true {
                 
-                
-                
-                self.credential = response
                 print("\nCheck Status:")
                 self.setProcessing()
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
-                
-                
             }
             
-            
         }
+        
         
     }
     
@@ -200,11 +197,6 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
             
         }
-        
-        credentials = self.site!.credentials!
-        
-        
-        print(credentials)
         
         
         /*
