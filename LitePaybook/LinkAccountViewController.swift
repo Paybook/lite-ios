@@ -190,7 +190,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
         case "banks":
             bankSelected = banksData[indexPath.row]
             print("selected \(bankSelected.name)")
-            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: bankSelected.id_site_organization, is_test: nil){
+            Catalogues.get_sites(currentSession, id_user: nil, is_test: nil,options: ["id_site_organization" :bankSelected.id_site_organization]){
                 response, error in
                 if response != nil {
                     
@@ -225,7 +225,7 @@ class LinkAccountViewController: UIViewController, UICollectionViewDelegate, UIC
             
             print("selected \(entitieSelected.name)")
             
-            Catalogues.get_sites(currentSession, id_user: nil, id_site_organization: entitieSelected.id_site_organization, is_test: nil){
+            Catalogues.get_sites(currentSession, id_user: nil, is_test: nil, options: ["id_site_organization": entitieSelected.id_site_organization]){
                 response, error in
                 if response != nil {
                     //Pasar a enviar credenciales

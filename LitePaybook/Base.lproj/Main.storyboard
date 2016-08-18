@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Sign In View Controller-->
@@ -179,7 +180,7 @@
             </objects>
             <point key="canvasLocation" x="446" y="466"/>
         </scene>
-        <!--Link Account View Controller-->
+        <!--Accounts-->
         <scene sceneID="bSM-Yv-hL4">
             <objects>
                 <viewController id="L1y-bh-rUo" customClass="LinkAccountViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
@@ -188,7 +189,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Qy9-3S-Kic"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5ST-IQ-Z5C">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pbD-6H-WaA">
@@ -238,8 +239,19 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Elige la institución a la que deseas conectarte" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Lt-pm-Si8">
+                                <rect key="frame" x="150" y="68" width="300" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="W6a-3F-ZfE"/>
+                                    <constraint firstAttribute="width" constant="300" id="h8O-5V-we4"/>
+                                    <constraint firstAttribute="height" constant="46" id="xty-ip-bNB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TGn-O5-kS5">
-                                <rect key="frame" x="0.0" y="122" width="600" height="429"/>
+                                <rect key="frame" x="0.0" y="139" width="600" height="397"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="WW1-9l-ljN">
                                     <size key="itemSize" width="80" height="100"/>
@@ -289,32 +301,22 @@
                                     <outlet property="delegate" destination="L1y-bh-rUo" id="Nsw-wk-hz8"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Elige la institución a la que deseas conectarte" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Lt-pm-Si8">
-                                <rect key="frame" x="150" y="68" width="300" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="W6a-3F-ZfE"/>
-                                    <constraint firstAttribute="width" constant="300" id="h8O-5V-we4"/>
-                                    <constraint firstAttribute="height" constant="46" id="xty-ip-bNB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pbD-6H-WaA" firstAttribute="centerX" secondItem="5ST-IQ-Z5C" secondAttribute="centerX" id="45v-LV-jgY"/>
-                            <constraint firstItem="7Lt-pm-Si8" firstAttribute="top" secondItem="pbD-6H-WaA" secondAttribute="bottom" constant="-2" id="5SJ-lV-VaZ"/>
-                            <constraint firstItem="7Lt-pm-Si8" firstAttribute="centerX" secondItem="5ST-IQ-Z5C" secondAttribute="centerX" id="96p-B1-bfn"/>
-                            <constraint firstItem="TGn-O5-kS5" firstAttribute="top" secondItem="7Lt-pm-Si8" secondAttribute="bottom" constant="8" id="LyC-QU-2Z4"/>
-                            <constraint firstItem="7Lt-pm-Si8" firstAttribute="top" secondItem="pbD-6H-WaA" secondAttribute="bottom" constant="-2" id="M08-ed-ncC"/>
-                            <constraint firstItem="TGn-O5-kS5" firstAttribute="centerX" secondItem="5ST-IQ-Z5C" secondAttribute="centerX" id="lRK-Ha-r7Z"/>
-                            <constraint firstItem="pbD-6H-WaA" firstAttribute="top" secondItem="kLp-b9-ibc" secondAttribute="bottom" id="m2S-NS-Kut"/>
-                            <constraint firstItem="Qy9-3S-Kic" firstAttribute="top" secondItem="TGn-O5-kS5" secondAttribute="bottom" id="weZ-Wb-mFX"/>
-                            <constraint firstItem="TGn-O5-kS5" firstAttribute="width" secondItem="5ST-IQ-Z5C" secondAttribute="width" id="y6t-p0-Pds"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TGn-O5-kS5" secondAttribute="trailing" id="1zL-pY-QY4"/>
+                            <constraint firstItem="pbD-6H-WaA" firstAttribute="centerX" secondItem="5ST-IQ-Z5C" secondAttribute="centerX" id="4vB-5b-lzH"/>
+                            <constraint firstItem="pbD-6H-WaA" firstAttribute="top" secondItem="kLp-b9-ibc" secondAttribute="bottom" constant="20" id="839-aX-18a"/>
+                            <constraint firstItem="TGn-O5-kS5" firstAttribute="leading" secondItem="5ST-IQ-Z5C" secondAttribute="leadingMargin" id="Bvy-BZ-tLn"/>
+                            <constraint firstItem="TGn-O5-kS5" firstAttribute="top" secondItem="7Lt-pm-Si8" secondAttribute="bottom" constant="25" id="HCy-nN-GUO"/>
+                            <constraint firstItem="7Lt-pm-Si8" firstAttribute="top" secondItem="pbD-6H-WaA" secondAttribute="bottom" constant="-2" id="Im9-ES-SP8"/>
+                            <constraint firstItem="TGn-O5-kS5" firstAttribute="centerX" secondItem="5ST-IQ-Z5C" secondAttribute="centerX" id="KH2-3e-78d"/>
+                            <constraint firstItem="Qy9-3S-Kic" firstAttribute="top" secondItem="TGn-O5-kS5" secondAttribute="bottom" id="OJr-18-OVO"/>
+                            <constraint firstItem="7Lt-pm-Si8" firstAttribute="centerX" secondItem="5ST-IQ-Z5C" secondAttribute="centerX" id="em3-8W-pmK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="w2v-kb-cIv"/>
+                    <navigationItem key="navigationItem" title="Accounts" id="w2v-kb-cIv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="banksButton" destination="vZ6-IU-gPA" id="ARH-1o-fED"/>
                         <outlet property="collectionView" destination="TGn-O5-kS5" id="U75-Su-k3G"/>
@@ -434,7 +436,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQu-6s-ZOA">
+                            <view alpha="0.0" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQu-6s-ZOA">
                                 <rect key="frame" x="0.0" y="120" width="600" height="480"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPf-S4-3V0">
@@ -444,7 +446,7 @@
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="KPf-S4-3V0" firstAttribute="width" secondItem="AQu-6s-ZOA" secondAttribute="width" id="KSd-HJ-bh5"/>
                                     <constraint firstItem="KPf-S4-3V0" firstAttribute="centerX" secondItem="AQu-6s-ZOA" secondAttribute="centerX" id="ZJs-fF-pnA"/>
@@ -484,7 +486,7 @@
         <!--Status Alert View Controller-->
         <scene sceneID="RBR-j0-Sqg">
             <objects>
-                <viewController storyboardIdentifier="statusAlertViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zVh-uJ-PMx" customClass="StatusAlertViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="statusAlertViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zVh-uJ-PMx" customClass="StatusAlertViewController" customModule="LitePaybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WJa-Ge-YIX"/>
                         <viewControllerLayoutGuide type="bottom" id="26P-Kh-0N7"/>
@@ -584,6 +586,8 @@
                             <constraint firstItem="YtA-eQ-nYR" firstAttribute="centerX" secondItem="idx-XN-lek" secondAttribute="centerX" id="zce-Ga-Iqs"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="i7s-ZD-PEg" id="42S-fu-ANc"/>
                         <outlet property="descLabel" destination="0qg-pm-ULY" id="mbJ-U1-jFS"/>
@@ -606,7 +610,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xTJ-cD-c3I"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9c7-wy-Rec">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKk-SS-uIr">
@@ -658,6 +662,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" id="gMg-hS-KQt"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="switchEnviroment" destination="PyQ-yG-Lco" id="lnz-I9-VlL"/>
                     </connections>
@@ -823,12 +828,13 @@
         <!--Accounts-->
         <scene sceneID="1gl-hF-rmd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7uZ-OU-ygs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7uZ-OU-ygs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Accounts" image="accountIcon" id="rPA-jo-XeC"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h69-QY-0zU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="h69-QY-0zU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.30980392159999998" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -963,16 +969,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p13-LX-E2f">
-                                <rect key="frame" x="0.0" y="86" width="600" height="465"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" style="plain" rowHeight="40" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="p13-LX-E2f">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellTransaction" id="hob-dP-suj">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="65" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hob-dP-suj" id="Wy2-sr-3A8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -986,9 +992,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="p13-LX-E2f" firstAttribute="width" secondItem="bIc-Bv-6no" secondAttribute="width" id="GcU-B6-Xeo"/>
-                            <constraint firstItem="OyJ-ac-x6r" firstAttribute="top" secondItem="p13-LX-E2f" secondAttribute="bottom" id="LhY-8U-srX"/>
-                            <constraint firstItem="p13-LX-E2f" firstAttribute="centerX" secondItem="bIc-Bv-6no" secondAttribute="centerX" id="Urx-IO-o2T"/>
+                            <constraint firstItem="OyJ-ac-x6r" firstAttribute="top" secondItem="p13-LX-E2f" secondAttribute="bottom" id="16c-kM-Jui"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p13-LX-E2f" secondAttribute="trailing" id="78R-6L-dJO"/>
+                            <constraint firstItem="p13-LX-E2f" firstAttribute="leading" secondItem="bIc-Bv-6no" secondAttribute="leadingMargin" id="NIT-3D-6Em"/>
+                            <constraint firstItem="p13-LX-E2f" firstAttribute="top" secondItem="Weh-im-S5z" secondAttribute="bottom" id="OeQ-TU-huD"/>
+                            <constraint firstItem="p13-LX-E2f" firstAttribute="centerX" secondItem="bIc-Bv-6no" secondAttribute="centerX" id="mAX-Fl-fjl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DGk-Fd-ZQm"/>

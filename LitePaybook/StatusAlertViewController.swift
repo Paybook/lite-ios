@@ -40,6 +40,7 @@ class StatusAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated:true);
         if status["success"] as! Bool {
             statusColorTopView.backgroundColor = UIColor.greenColor()
             succesButton.setTitle("TERMINAR", forState: .Normal)

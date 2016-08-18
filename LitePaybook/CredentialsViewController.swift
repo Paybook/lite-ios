@@ -40,6 +40,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
         
         print(credentialsString)
         sending = true
+        setProcessing()
         _ = Credentials(session: currentSession, id_user: nil, id_site: site.id_site, credentials: credentialsString){
             response, error in
             self.sending = false
@@ -49,7 +50,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
                 
                 self.credential = response
                 print("\nCheck Status:")
-                self.setProcessing()
+                
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
                 
@@ -152,7 +153,11 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func setProcessing(){
         print("Processing")
-        processingView.hidden = false
+        UIView.animateWithDuration(0.5, animations: {
+            self.processingView.alpha = 1.0
+        })
+        
+        
         
         
     }
@@ -201,6 +206,7 @@ class CredentialsViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated:true);
         if bank != nil {
             nameLabel.text = bank.name
             if let coverImage = bank.cover{

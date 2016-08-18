@@ -186,6 +186,7 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated:true);
         if bank != nil {
             nameLabel.text = bank.name
             if let coverImage = bank.cover{

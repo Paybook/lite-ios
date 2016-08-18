@@ -24,10 +24,13 @@ class ProcessingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
    
     func showAlert(){
         print("animate")
-        self.loaderImage.rotate360Degrees()
+        UIView.animateWithDuration(1.5, animations: {
+            self.view.alpha = 1.0
+        })
         /*
         self.view.hidden = false
         let duration = 2.0
