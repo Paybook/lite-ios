@@ -17,16 +17,26 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @IBAction func LogIn(sender: AnyObject) {
+        
         if userSelected != nil{
-            _ = Session(id_user: userSelected.id_user){
-               response, error in
-                if response != nil{
-                    self.openDashboard(response!)
-                }else{
-                    print(error?.message)
+            if (UserMO.checkPassword(userSelected!.name, password: "gabriel") != nil){
+                print("Success")
+                //Get a Paybook session
+                _ = Session(id_user: userSelected.id_user){
+                    response, error in
+                    if response != nil{
+                        self.openDashboard(response!)
+                    }else{
+                        print(error?.message)
+                    }
                 }
+
+            }else{
+                print("Fail")
             }
         }
+        
+      
     }
     
     @IBAction func DeleteUser(sender: AnyObject) {
@@ -51,22 +61,16 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func Cancel(sender: AnyObject) {
-        
         self.navigationController?.popViewControllerAnimated(true)
-        
-        
     }
     @IBOutlet weak var tableView: UITableView!
 
     
     
     func openDashboard(session: Session)->Void{
-        let defaults = NSUserDefaults.standardUserDefaults()
-        //defaults.setObject(session, forKey: "session")
+        // Save the current session
         currentSession = session
-        
-        defaults.setObject(session.token, forKey: "token")
-        
+        //Open Dashboard
         let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DashboardViewController") as! SWRevealViewController
         self.presentViewController(dashboard, animated: true, completion: nil)
         
@@ -74,7 +78,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return users.count
     }
     
@@ -102,23 +105,13 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tableView.reloadData()
             }
         }
-        // Do any additional setup after loading the view.
+     
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -48,7 +48,7 @@ class IndexViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        logInButton.layer.borderColor = UIColor(colorLiteralRed: 19/250, green: 160/250, blue: 213/250, alpha: 1.0).CGColor
+        logInButton.layer.borderColor = UIColor.whiteColor().CGColor
         logInButton.layer.borderWidth = 1.0
     }
     

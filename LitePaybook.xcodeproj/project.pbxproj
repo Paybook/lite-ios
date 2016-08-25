@@ -9,10 +9,31 @@
 /* Begin PBXBuildFile section */
 		14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */; };
 		1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426DAC11CEC32B60068A442 /* SettingsViewController.swift */; };
+		142A39161D6DF8B5007FAC0B /* SignInViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A39151D6DF8B5007FAC0B /* SignInViewController2.swift */; };
+		142EB2571D6B76B000D62E06 /* Exo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2451D6B76B000D62E06 /* Exo-Black.ttf */; };
+		142EB2581D6B76B000D62E06 /* Exo-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2461D6B76B000D62E06 /* Exo-BlackItalic.ttf */; };
+		142EB2591D6B76B000D62E06 /* Exo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2471D6B76B000D62E06 /* Exo-Bold.ttf */; };
+		142EB25A1D6B76B000D62E06 /* Exo-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2481D6B76B000D62E06 /* Exo-BoldItalic.ttf */; };
+		142EB25B1D6B76B000D62E06 /* Exo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2491D6B76B000D62E06 /* Exo-ExtraBold.ttf */; };
+		142EB25C1D6B76B000D62E06 /* Exo-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB24A1D6B76B000D62E06 /* Exo-ExtraBoldItalic.ttf */; };
+		142EB25D1D6B76B000D62E06 /* Exo-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB24B1D6B76B000D62E06 /* Exo-ExtraLight.ttf */; };
+		142EB25E1D6B76B000D62E06 /* Exo-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB24C1D6B76B000D62E06 /* Exo-ExtraLightItalic.ttf */; };
+		142EB25F1D6B76B000D62E06 /* Exo-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB24D1D6B76B000D62E06 /* Exo-Italic.ttf */; };
+		142EB2601D6B76B000D62E06 /* Exo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB24E1D6B76B000D62E06 /* Exo-Light.ttf */; };
+		142EB2611D6B76B000D62E06 /* Exo-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB24F1D6B76B000D62E06 /* Exo-LightItalic.ttf */; };
+		142EB2621D6B76B000D62E06 /* Exo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2501D6B76B000D62E06 /* Exo-Medium.ttf */; };
+		142EB2631D6B76B000D62E06 /* Exo-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2511D6B76B000D62E06 /* Exo-MediumItalic.ttf */; };
+		142EB2641D6B76B000D62E06 /* Exo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2521D6B76B000D62E06 /* Exo-Regular.ttf */; };
+		142EB2651D6B76B000D62E06 /* Exo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2531D6B76B000D62E06 /* Exo-SemiBold.ttf */; };
+		142EB2661D6B76B000D62E06 /* Exo-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2541D6B76B000D62E06 /* Exo-SemiBoldItalic.ttf */; };
+		142EB2671D6B76B000D62E06 /* Exo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2551D6B76B000D62E06 /* Exo-Thin.ttf */; };
+		142EB2681D6B76B000D62E06 /* Exo-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2561D6B76B000D62E06 /* Exo-ThinItalic.ttf */; };
 		1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */; };
 		14384B251D4A991B00B897C8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14384B241D4A991B00B897C8 /* SWRevealViewController.m */; };
 		14384B271D4AD06500B897C8 /* TwofaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14384B261D4AD06500B897C8 /* TwofaViewController.swift */; };
 		1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */; };
+		146CD20F1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CD20D1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift */; };
+		146CD2101D6CCEFD002BBD38 /* UserMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CD20E1D6CCEFD002BBD38 /* UserMO.swift */; };
 		14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D311CEF77B80073302B /* CredentialsViewController.swift */; };
 		14860D341CEF82BE0073302B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D331CEF82BE0073302B /* Config.swift */; };
 		14860D361CEF83370073302B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D351CEF83370073302B /* ImageCache.swift */; };
@@ -54,11 +75,32 @@
 /* Begin PBXFileReference section */
 		14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		1426DAC11CEC32B60068A442 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		142A39151D6DF8B5007FAC0B /* SignInViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController2.swift; sourceTree = "<group>"; };
+		142EB2451D6B76B000D62E06 /* Exo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Black.ttf"; sourceTree = "<group>"; };
+		142EB2461D6B76B000D62E06 /* Exo-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-BlackItalic.ttf"; sourceTree = "<group>"; };
+		142EB2471D6B76B000D62E06 /* Exo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Bold.ttf"; sourceTree = "<group>"; };
+		142EB2481D6B76B000D62E06 /* Exo-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-BoldItalic.ttf"; sourceTree = "<group>"; };
+		142EB2491D6B76B000D62E06 /* Exo-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-ExtraBold.ttf"; sourceTree = "<group>"; };
+		142EB24A1D6B76B000D62E06 /* Exo-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		142EB24B1D6B76B000D62E06 /* Exo-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-ExtraLight.ttf"; sourceTree = "<group>"; };
+		142EB24C1D6B76B000D62E06 /* Exo-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		142EB24D1D6B76B000D62E06 /* Exo-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Italic.ttf"; sourceTree = "<group>"; };
+		142EB24E1D6B76B000D62E06 /* Exo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Light.ttf"; sourceTree = "<group>"; };
+		142EB24F1D6B76B000D62E06 /* Exo-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-LightItalic.ttf"; sourceTree = "<group>"; };
+		142EB2501D6B76B000D62E06 /* Exo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Medium.ttf"; sourceTree = "<group>"; };
+		142EB2511D6B76B000D62E06 /* Exo-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-MediumItalic.ttf"; sourceTree = "<group>"; };
+		142EB2521D6B76B000D62E06 /* Exo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Regular.ttf"; sourceTree = "<group>"; };
+		142EB2531D6B76B000D62E06 /* Exo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-SemiBold.ttf"; sourceTree = "<group>"; };
+		142EB2541D6B76B000D62E06 /* Exo-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		142EB2551D6B76B000D62E06 /* Exo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Thin.ttf"; sourceTree = "<group>"; };
+		142EB2561D6B76B000D62E06 /* Exo-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-ThinItalic.ttf"; sourceTree = "<group>"; };
 		1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		14384B231D4A991B00B897C8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		14384B241D4A991B00B897C8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		14384B261D4AD06500B897C8 /* TwofaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwofaViewController.swift; sourceTree = "<group>"; };
 		1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
+		146CD20D1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserMO+CoreDataProperties.swift"; path = "Models/UserMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		146CD20E1D6CCEFD002BBD38 /* UserMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserMO.swift; path = Models/UserMO.swift; sourceTree = "<group>"; };
 		14860D311CEF77B80073302B /* CredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
 		14860D331CEF82BE0073302B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		14860D351CEF83370073302B /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -115,6 +157,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		142EB2441D6B758400D62E06 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				142EB2691D6B76FD00D62E06 /* fonts */,
+			);
+			name = Resources;
+			path = LitePaybook;
+			sourceTree = "<group>";
+		};
+		142EB2691D6B76FD00D62E06 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				142EB2451D6B76B000D62E06 /* Exo-Black.ttf */,
+				142EB2461D6B76B000D62E06 /* Exo-BlackItalic.ttf */,
+				142EB2471D6B76B000D62E06 /* Exo-Bold.ttf */,
+				142EB2481D6B76B000D62E06 /* Exo-BoldItalic.ttf */,
+				142EB2491D6B76B000D62E06 /* Exo-ExtraBold.ttf */,
+				142EB24A1D6B76B000D62E06 /* Exo-ExtraBoldItalic.ttf */,
+				142EB24B1D6B76B000D62E06 /* Exo-ExtraLight.ttf */,
+				142EB24C1D6B76B000D62E06 /* Exo-ExtraLightItalic.ttf */,
+				142EB24D1D6B76B000D62E06 /* Exo-Italic.ttf */,
+				142EB24E1D6B76B000D62E06 /* Exo-Light.ttf */,
+				142EB24F1D6B76B000D62E06 /* Exo-LightItalic.ttf */,
+				142EB2501D6B76B000D62E06 /* Exo-Medium.ttf */,
+				142EB2511D6B76B000D62E06 /* Exo-MediumItalic.ttf */,
+				142EB2521D6B76B000D62E06 /* Exo-Regular.ttf */,
+				142EB2531D6B76B000D62E06 /* Exo-SemiBold.ttf */,
+				142EB2541D6B76B000D62E06 /* Exo-SemiBoldItalic.ttf */,
+				142EB2551D6B76B000D62E06 /* Exo-Thin.ttf */,
+				142EB2561D6B76B000D62E06 /* Exo-ThinItalic.ttf */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
 		14384B221D4A98FB00B897C8 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,12 +200,22 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		146CD20C1D6CCE4E002BBD38 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				146CD20D1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift */,
+				146CD20E1D6CCEFD002BBD38 /* UserMO.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		14ABC4D01CE39773006AAC2F = {
 			isa = PBXGroup;
 			children = (
 				14384B221D4A98FB00B897C8 /* SWRevealViewController */,
 				14ABC4DB1CE39774006AAC2F /* LitePaybook */,
 				14ABC4F31CE39775006AAC2F /* LitePaybookTests */,
+				142EB2441D6B758400D62E06 /* Resources */,
 				14ABC4FE1CE39775006AAC2F /* LitePaybookUITests */,
 				14ABC4DA1CE39774006AAC2F /* Products */,
 				32526E4E4418621413F99E29 /* Pods */,
@@ -152,6 +238,7 @@
 			children = (
 				14ABC5301CE4363D006AAC2F /* LICENSE */,
 				14ABC5311CE4363D006AAC2F /* README.md */,
+				146CD20C1D6CCE4E002BBD38 /* Models */,
 				14ABC5121CE3A25F006AAC2F /* Controllers */,
 				14ABC5111CE3A24D006AAC2F /* Config */,
 				14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */,
@@ -195,6 +282,7 @@
 		14ABC5121CE3A25F006AAC2F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				142A39151D6DF8B5007FAC0B /* SignInViewController2.swift */,
 				14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */,
 				14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */,
 				14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */,
@@ -336,9 +424,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				14ABC4EA1CE39775006AAC2F /* LaunchScreen.storyboard in Resources */,
+				142EB25C1D6B76B000D62E06 /* Exo-ExtraBoldItalic.ttf in Resources */,
 				14ABC4E71CE39775006AAC2F /* Assets.xcassets in Resources */,
+				142EB2631D6B76B000D62E06 /* Exo-MediumItalic.ttf in Resources */,
+				142EB2671D6B76B000D62E06 /* Exo-Thin.ttf in Resources */,
+				142EB25E1D6B76B000D62E06 /* Exo-ExtraLightItalic.ttf in Resources */,
+				142EB2681D6B76B000D62E06 /* Exo-ThinItalic.ttf in Resources */,
+				142EB2621D6B76B000D62E06 /* Exo-Medium.ttf in Resources */,
 				14ABC5321CE4363D006AAC2F /* LICENSE in Resources */,
+				142EB2571D6B76B000D62E06 /* Exo-Black.ttf in Resources */,
+				142EB2601D6B76B000D62E06 /* Exo-Light.ttf in Resources */,
 				14ABC4E21CE39774006AAC2F /* Main.storyboard in Resources */,
+				142EB25F1D6B76B000D62E06 /* Exo-Italic.ttf in Resources */,
+				142EB2581D6B76B000D62E06 /* Exo-BlackItalic.ttf in Resources */,
+				142EB2641D6B76B000D62E06 /* Exo-Regular.ttf in Resources */,
+				142EB25B1D6B76B000D62E06 /* Exo-ExtraBold.ttf in Resources */,
+				142EB2611D6B76B000D62E06 /* Exo-LightItalic.ttf in Resources */,
+				142EB25A1D6B76B000D62E06 /* Exo-BoldItalic.ttf in Resources */,
+				142EB2661D6B76B000D62E06 /* Exo-SemiBoldItalic.ttf in Resources */,
+				142EB25D1D6B76B000D62E06 /* Exo-ExtraLight.ttf in Resources */,
+				142EB2651D6B76B000D62E06 /* Exo-SemiBold.ttf in Resources */,
+				142EB2591D6B76B000D62E06 /* Exo-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +524,7 @@
 				14ABC5331CE4363D006AAC2F /* README.md in Sources */,
 				14384B251D4A991B00B897C8 /* SWRevealViewController.m in Sources */,
 				1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */,
+				142A39161D6DF8B5007FAC0B /* SignInViewController2.swift in Sources */,
 				14BF43391CE6824800C45D64 /* BankCell.swift in Sources */,
 				14ED412D1D3EE41B002E93C0 /* SignInViewController.swift in Sources */,
 				14BF433B1CE6833C00C45D64 /* LinkAccountViewController.swift in Sources */,
@@ -426,8 +533,10 @@
 				14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */,
 				14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */,
 				14860D3A1CEFC5E90073302B /* CredentialCell.swift in Sources */,
+				146CD20F1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift in Sources */,
 				14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */,
 				14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */,
+				146CD2101D6CCEFD002BBD38 /* UserMO.swift in Sources */,
 				1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

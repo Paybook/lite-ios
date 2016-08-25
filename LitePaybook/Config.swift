@@ -10,7 +10,7 @@ import Foundation
 import Paybook
 
 
-let api_key : String = "YOUR_API KEY"
+let api_key : String = "YOUR_API_KEY"
 let url_images : String = "https://s.paybook.com"
 var currentSession : Session!
 var isTest : Bool = false
