@@ -19,6 +19,18 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func LogIn(sender: AnyObject) {
         
         if userSelected != nil{
+            print("Success")
+            //Get a Paybook session
+            _ = Session(id_user: userSelected.id_user){
+                response, error in
+                if response != nil{
+                    self.openDashboard(response!)
+                }else{
+                    print(error?.message)
+                }
+            }
+        
+            /*
             if (UserMO.checkPassword(userSelected!.name, password: "gabriel") != nil){
                 print("Success")
                 //Get a Paybook session
@@ -33,7 +45,7 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
             }else{
                 print("Fail")
-            }
+            }*/
         }
         
       
@@ -73,7 +85,6 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Open Dashboard
         let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DashboardViewController") as! SWRevealViewController
         self.presentViewController(dashboard, animated: true, completion: nil)
-        
     }
     
     

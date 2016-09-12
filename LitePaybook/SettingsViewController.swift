@@ -12,18 +12,14 @@ import Paybook
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var switchEnviroment: UISwitch!
+    @IBOutlet weak var topBar: UIView!
+    
+   
     
     
-    @IBAction func logOutButton(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
-        
-        
-        //let indexViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("index") as! IndexViewController
-        
+    @IBAction func openMenu(sender: AnyObject) {
+        revealViewController().rightRevealToggleAnimated(true)
     }
-    
-    
-    
     
     func changeEnviroment(sender: UISwitch){
         
@@ -53,25 +49,26 @@ class SettingsViewController: UIViewController {
         
         switchEnviroment.addTarget(self, action: #selector(changeEnviroment), forControlEvents: .ValueChanged)
         
+        let topColor  = UIColor(colorLiteralRed: (216/255.0), green: (57/255.0), blue: (72/255.0), alpha: 1.0)
+        let bottomColor  = UIColor(colorLiteralRed: (78/255.0), green: (51/255.0), blue: (90/255.0), alpha: 1.0)
         
         
-        // Do any additional setup after loading the view.
+        let gradientColors : [CGColor] = [topColor.CGColor,bottomColor.CGColor]
+        
+        let gradientLocations = [0.0, 1.0]
+        let gradientLayer : CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations
+        gradientLayer.frame = self.topBar.bounds
+        
+        self.topBar.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

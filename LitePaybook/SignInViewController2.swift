@@ -11,12 +11,15 @@ import Paybook
 
 
 class SignInViewController2: UIViewController, UITextFieldDelegate {
-
+    var textActive : UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var textsView: UIView!
     @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func signIn(sender: AnyObject) {
         //let user =
@@ -48,15 +51,25 @@ class SignInViewController2: UIViewController, UITextFieldDelegate {
     }
     
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textActive = textField
+        /*
+         if ((textsView.frame.size.height - (textField.center.y + 30)) < 216){
+         scrollView.setContentOffset(CGPointMake(0, (216 - (textField.center.y + 30))), animated: true)
+         }
+         */
+    }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         view.endEditing(true)
+        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
     }
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let nextTag: NSInteger = textField.tag + 1;
         
-        if textField.tag == 1{
+        if textField.tag == 2{
             view.endEditing(true)
             
         }else{
@@ -70,20 +83,53 @@ class SignInViewController2: UIViewController, UITextFieldDelegate {
             }
             
         }
-        return false // We do not want UITextField to insert line-breaks.
+        return true // We do not want UITextField to insert line-breaks.
     }
     
-    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            print(textActive.center.y,keyboardSize.height,(textsView.frame.size.height),(textsView.frame.size.height) - (textActive.center.y + 15))
+            
+            if (textActive.center.y + 15) > (textsView.frame.size.height - keyboardSize.height){
+                scrollView.setContentOffset(CGPointMake(0,(textActive.center.y + 15) - (textsView.frame.size.height - keyboardSize.height)), animated: true)
+            }
+            
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let topColor  = UIColor(colorLiteralRed: (216/255.0), green: (57/255.0), blue: (72/255.0), alpha: 1.0)
+        let bottomColor  = UIColor(colorLiteralRed: (78/255.0), green: (51/255.0), blue: (90/255.0), alpha: 1.0)
+        
+        
+        let gradientColors : [CGColor] = [topColor.CGColor,bottomColor.CGColor]
+        
+        let gradientLocations = [0.0, 1.0]
+        let gradientLayer : CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations
+        gradientLayer.frame = self.topView.bounds
+        
+        self.topView.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
+        
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
     }
     
 

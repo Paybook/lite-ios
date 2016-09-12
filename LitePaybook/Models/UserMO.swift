@@ -21,9 +21,19 @@ class UserMO: NSManagedObject {
         self.id_user = user.id_user
         self.id_external = user.id_external
         self.name = user.name
-        self.dt_create = nil
-        self.dt_modify = nil
         self.password = password
+        
+        if let dtcreate = user.dt_create{
+            self.dt_create = Int32(dtcreate)
+        }else{
+            self.dt_create = 0
+        }
+        
+        if let dtmodify = user.dt_modify{
+            self.dt_modify = Int32(dtmodify)
+        }else{
+            self.dt_modify = 0
+        }
         
         do {
             try managedContext.save()

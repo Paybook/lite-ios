@@ -14,15 +14,11 @@ class StatusAlertViewController: UIViewController {
     
     
     @IBOutlet weak var statusColorTopView: UIView!
-    @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UITextView!
     @IBOutlet weak var succesButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    
-    
-    
-    
+    @IBOutlet weak var iconLabel: UILabel!
     
     @IBAction func addOtherAccount(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -40,34 +36,25 @@ class StatusAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated:true);
+        
         if status["success"] as! Bool {
-            statusColorTopView.backgroundColor = UIColor.greenColor()
+            statusColorTopView.backgroundColor = UIColor(colorLiteralRed: (22/255.0), green: (192/255.0), blue: (79/255.0), alpha: 1.0)
             succesButton.setTitle("TERMINAR", forState: .Normal)
-            iconImage.image = UIImage(named: "ok-icon")
+            iconLabel.text = ""
+            iconLabel.textColor =  UIColor(colorLiteralRed: (22/255.0), green: (192/255.0), blue: (79/255.0), alpha: 1.0)
         }else{
-            statusColorTopView.backgroundColor = UIColor.redColor()
-            iconImage.image = UIImage(named: "error-icon")
+            statusColorTopView.backgroundColor = UIColor(colorLiteralRed: (216/255.0), green: (58/255.0), blue: (72/255.0), alpha: 1.0)
+            iconLabel.text = ""
+            iconLabel.textColor = UIColor(colorLiteralRed: (216/255.0), green: (58/255.0), blue: (72/255.0), alpha: 1.0)
         }
         titleLabel.text = status["title"] as? String
         descLabel.text = status["desc"] as? String
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

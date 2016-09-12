@@ -18,30 +18,20 @@ class IndexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Paybook.api_key = api_key
+        let topColor  = UIColor(colorLiteralRed: (216/255.0), green: (57/255.0), blue: (72/255.0), alpha: 1.0)
+        let bottomColor  = UIColor(colorLiteralRed: (78/255.0), green: (51/255.0), blue: (90/255.0), alpha: 1.0)
         
         
-        if currentSession != nil{
-            
-            let dashboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("tabDashboard") as! UITabBarController
-            self.presentViewController(dashboard, animated: true, completion: nil)
-            
-            currentSession.validate(){
-                response, error in
-                if response != nil && response == true {
-                    print("Session validated")
-                }else{
-                    print("Session expired")
-                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
-                    currentSession = nil
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("indexViewController") as! IndexViewController
-                    self.presentViewController(vc, animated: true, completion: nil)
-                }
-            }
-        }
+        let gradientColors : [CGColor] = [topColor.CGColor,bottomColor.CGColor]
         
-
+        let gradientLocations = [0.0, 1.0]
+        let gradientLayer : CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations
+        gradientLayer.frame = self.view.bounds
+        
+        self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
         
         // Do any additional setup after loading the view.
     }

@@ -17,8 +17,8 @@ extension UserMO {
     @NSManaged var name: String?
     @NSManaged var id_user: String?
     @NSManaged var id_external: String?
-    @NSManaged var dt_create: String?
-    @NSManaged var dt_modify: String?
+    @NSManaged var dt_create: Int32
+    @NSManaged var dt_modify: Int32
     @NSManaged var password: String?
 
 }

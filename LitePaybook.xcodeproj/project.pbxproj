@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140966F71D79CE6600FA5EBE /* SelectSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140966F61D79CE6600FA5EBE /* SelectSiteViewController.swift */; };
+		140966FB1D79D10F00FA5EBE /* SiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140966FA1D79D10F00FA5EBE /* SiteTableViewCell.swift */; };
+		140966FD1D7A3B3000FA5EBE /* Twofa2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140966FC1D7A3B3000FA5EBE /* Twofa2ViewController.swift */; };
+		140967001D7A3FAE00FA5EBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140966FE1D7A3FAE00FA5EBE /* Main.storyboard */; };
+		140967021D7A4BFD00FA5EBE /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 140967011D7A4BFD00FA5EBE /* FontAwesome.otf */; };
+		141B045C1D7DC1220029201A /* RightMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B045B1D7DC1220029201A /* RightMenuTableViewController.swift */; };
 		14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */; };
 		1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426DAC11CEC32B60068A442 /* SettingsViewController.swift */; };
 		142A39161D6DF8B5007FAC0B /* SignInViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A39151D6DF8B5007FAC0B /* SignInViewController2.swift */; };
@@ -29,17 +35,23 @@
 		142EB2671D6B76B000D62E06 /* Exo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2551D6B76B000D62E06 /* Exo-Thin.ttf */; };
 		142EB2681D6B76B000D62E06 /* Exo-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 142EB2561D6B76B000D62E06 /* Exo-ThinItalic.ttf */; };
 		1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */; };
+		1432D6AE1D709D270057D16F /* TransactionMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1432D6AA1D709D270057D16F /* TransactionMO+CoreDataProperties.swift */; };
+		1432D6AF1D709D270057D16F /* TransactionMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1432D6AB1D709D270057D16F /* TransactionMO.swift */; };
+		1435984F1D70D98900B687EE /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1435984E1D70D98900B687EE /* TransactionTableViewCell.swift */; };
 		14384B251D4A991B00B897C8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14384B241D4A991B00B897C8 /* SWRevealViewController.m */; };
 		14384B271D4AD06500B897C8 /* TwofaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14384B261D4AD06500B897C8 /* TwofaViewController.swift */; };
-		1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */; };
+		143889231D772C5C00EBF804 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143889221D772C5C00EBF804 /* AccountViewController.swift */; };
+		143889251D77310900EBF804 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143889241D77310900EBF804 /* AccountTableViewCell.swift */; };
+		1459F9A31D78A396005F3E54 /* AccountStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459F9A21D78A396005F3E54 /* AccountStep1ViewController.swift */; };
+		1459F9A51D78A671005F3E54 /* SiteOrganizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459F9A41D78A671005F3E54 /* SiteOrganizationTableViewCell.swift */; };
 		146CD20F1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CD20D1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift */; };
 		146CD2101D6CCEFD002BBD38 /* UserMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CD20E1D6CCEFD002BBD38 /* UserMO.swift */; };
-		14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D311CEF77B80073302B /* CredentialsViewController.swift */; };
+		146E2C4E1D74E6930083D4B2 /* AccounMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E2C4C1D74E6930083D4B2 /* AccounMO+CoreDataProperties.swift */; };
+		146E2C4F1D74E6930083D4B2 /* AccounMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E2C4D1D74E6930083D4B2 /* AccounMO.swift */; };
 		14860D341CEF82BE0073302B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D331CEF82BE0073302B /* Config.swift */; };
 		14860D361CEF83370073302B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D351CEF83370073302B /* ImageCache.swift */; };
 		14860D3A1CEFC5E90073302B /* CredentialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14860D391CEFC5E90073302B /* CredentialCell.swift */; };
 		14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */; };
-		14ABC4E21CE39774006AAC2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E01CE39774006AAC2F /* Main.storyboard */; };
 		14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC4E31CE39775006AAC2F /* LitePaybook.xcdatamodeld */; };
 		14ABC4E71CE39775006AAC2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E61CE39775006AAC2F /* Assets.xcassets */; };
 		14ABC4EA1CE39775006AAC2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC4E81CE39775006AAC2F /* LaunchScreen.storyboard */; };
@@ -48,7 +60,6 @@
 		14ABC5321CE4363D006AAC2F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 14ABC5301CE4363D006AAC2F /* LICENSE */; };
 		14ABC5331CE4363D006AAC2F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 14ABC5311CE4363D006AAC2F /* README.md */; };
 		14BF43391CE6824800C45D64 /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF43381CE6824800C45D64 /* BankCell.swift */; };
-		14BF433B1CE6833C00C45D64 /* LinkAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */; };
 		14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */; };
 		14D1999D1CF7AD2E00A57EA1 /* StatusAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */; };
 		14ED412D1D3EE41B002E93C0 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */; };
@@ -73,6 +84,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140966F61D79CE6600FA5EBE /* SelectSiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSiteViewController.swift; sourceTree = "<group>"; };
+		140966FA1D79D10F00FA5EBE /* SiteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewCell.swift; sourceTree = "<group>"; };
+		140966FC1D7A3B3000FA5EBE /* Twofa2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twofa2ViewController.swift; sourceTree = "<group>"; };
+		140966FF1D7A3FAE00FA5EBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		140967011D7A4BFD00FA5EBE /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		141B045B1D7DC1220029201A /* RightMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuTableViewController.swift; sourceTree = "<group>"; };
 		14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		1426DAC11CEC32B60068A442 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		142A39151D6DF8B5007FAC0B /* SignInViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController2.swift; sourceTree = "<group>"; };
@@ -95,19 +112,25 @@
 		142EB2551D6B76B000D62E06 /* Exo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Thin.ttf"; sourceTree = "<group>"; };
 		142EB2561D6B76B000D62E06 /* Exo-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-ThinItalic.ttf"; sourceTree = "<group>"; };
 		1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		1432D6AA1D709D270057D16F /* TransactionMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TransactionMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1432D6AB1D709D270057D16F /* TransactionMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionMO.swift; sourceTree = "<group>"; };
+		1435984E1D70D98900B687EE /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		14384B231D4A991B00B897C8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		14384B241D4A991B00B897C8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		14384B261D4AD06500B897C8 /* TwofaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwofaViewController.swift; sourceTree = "<group>"; };
-		1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
+		143889221D772C5C00EBF804 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		143889241D77310900EBF804 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		1459F9A21D78A396005F3E54 /* AccountStep1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStep1ViewController.swift; sourceTree = "<group>"; };
+		1459F9A41D78A671005F3E54 /* SiteOrganizationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteOrganizationTableViewCell.swift; sourceTree = "<group>"; };
 		146CD20D1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserMO+CoreDataProperties.swift"; path = "Models/UserMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		146CD20E1D6CCEFD002BBD38 /* UserMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserMO.swift; path = Models/UserMO.swift; sourceTree = "<group>"; };
-		14860D311CEF77B80073302B /* CredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
+		146E2C4C1D74E6930083D4B2 /* AccounMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AccounMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		146E2C4D1D74E6930083D4B2 /* AccounMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccounMO.swift; sourceTree = "<group>"; };
 		14860D331CEF82BE0073302B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		14860D351CEF83370073302B /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		14860D391CEFC5E90073302B /* CredentialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialCell.swift; sourceTree = "<group>"; };
 		14ABC4D91CE39774006AAC2F /* LitePaybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LitePaybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		14ABC4E11CE39774006AAC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14ABC4E41CE39775006AAC2F /* LitePaybook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LitePaybook.xcdatamodel; sourceTree = "<group>"; };
 		14ABC4E61CE39775006AAC2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14ABC4E91CE39775006AAC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -122,7 +145,6 @@
 		14ABC5301CE4363D006AAC2F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		14ABC5311CE4363D006AAC2F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14BF43381CE6824800C45D64 /* BankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
-		14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountViewController.swift; sourceTree = "<group>"; };
 		14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusAlertViewController.swift; sourceTree = "<group>"; };
 		14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +191,7 @@
 		142EB2691D6B76FD00D62E06 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				140967011D7A4BFD00FA5EBE /* FontAwesome.otf */,
 				142EB2451D6B76B000D62E06 /* Exo-Black.ttf */,
 				142EB2461D6B76B000D62E06 /* Exo-BlackItalic.ttf */,
 				142EB2471D6B76B000D62E06 /* Exo-Bold.ttf */,
@@ -200,9 +223,26 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		143889261D77311100EBF804 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				140966FA1D79D10F00FA5EBE /* SiteTableViewCell.swift */,
+				1459F9A41D78A671005F3E54 /* SiteOrganizationTableViewCell.swift */,
+				143889241D77310900EBF804 /* AccountTableViewCell.swift */,
+				1435984E1D70D98900B687EE /* TransactionTableViewCell.swift */,
+				14BF43381CE6824800C45D64 /* BankCell.swift */,
+				14860D391CEFC5E90073302B /* CredentialCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
 		146CD20C1D6CCE4E002BBD38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				146E2C4C1D74E6930083D4B2 /* AccounMO+CoreDataProperties.swift */,
+				146E2C4D1D74E6930083D4B2 /* AccounMO.swift */,
+				1432D6AA1D709D270057D16F /* TransactionMO+CoreDataProperties.swift */,
+				1432D6AB1D709D270057D16F /* TransactionMO.swift */,
 				146CD20D1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift */,
 				146CD20E1D6CCEFD002BBD38 /* UserMO.swift */,
 			);
@@ -244,7 +284,7 @@
 				14ABC4DC1CE39774006AAC2F /* AppDelegate.swift */,
 				14860D351CEF83370073302B /* ImageCache.swift */,
 				14ABC4E61CE39775006AAC2F /* Assets.xcassets */,
-				14ABC4E01CE39774006AAC2F /* Main.storyboard */,
+				140966FE1D7A3FAE00FA5EBE /* Main.storyboard */,
 				14ABC4E81CE39775006AAC2F /* LaunchScreen.storyboard */,
 				14ABC4EB1CE39775006AAC2F /* Info.plist */,
 				14ABC4E31CE39775006AAC2F /* LitePaybook.xcdatamodeld */,
@@ -282,18 +322,19 @@
 		14ABC5121CE3A25F006AAC2F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				141B045B1D7DC1220029201A /* RightMenuTableViewController.swift */,
+				140966FC1D7A3B3000FA5EBE /* Twofa2ViewController.swift */,
+				140966F61D79CE6600FA5EBE /* SelectSiteViewController.swift */,
+				143889261D77311100EBF804 /* TableViewCells */,
+				143889221D772C5C00EBF804 /* AccountViewController.swift */,
+				1459F9A21D78A396005F3E54 /* AccountStep1ViewController.swift */,
 				142A39151D6DF8B5007FAC0B /* SignInViewController2.swift */,
 				14212AE61CE4E2B200BC14F7 /* IndexViewController.swift */,
 				14ED412C1D3EE41B002E93C0 /* SignInViewController.swift */,
 				14BF433C1CE685BE00C45D64 /* SignUpViewController.swift */,
-				14BF433A1CE6833C00C45D64 /* LinkAccountViewController.swift */,
 				1426DAC11CEC32B60068A442 /* SettingsViewController.swift */,
 				14384B261D4AD06500B897C8 /* TwofaViewController.swift */,
-				14860D311CEF77B80073302B /* CredentialsViewController.swift */,
-				14860D391CEFC5E90073302B /* CredentialCell.swift */,
-				14BF43381CE6824800C45D64 /* BankCell.swift */,
 				1431FDC11D401DB100CD7075 /* TransactionsViewController.swift */,
-				1462B63F1CF8FCD000619901 /* ProcessingViewController.swift */,
 				14D1999C1CF7AD2D00A57EA1 /* StatusAlertViewController.swift */,
 			);
 			name = Controllers;
@@ -387,6 +428,7 @@
 				TargetAttributes = {
 					14ABC4D81CE39773006AAC2F = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FH9H9L37WU;
 					};
 					14ABC4EF1CE39775006AAC2F = {
 						CreatedOnToolsVersion = 7.3;
@@ -428,16 +470,17 @@
 				14ABC4E71CE39775006AAC2F /* Assets.xcassets in Resources */,
 				142EB2631D6B76B000D62E06 /* Exo-MediumItalic.ttf in Resources */,
 				142EB2671D6B76B000D62E06 /* Exo-Thin.ttf in Resources */,
+				140967001D7A3FAE00FA5EBE /* Main.storyboard in Resources */,
 				142EB25E1D6B76B000D62E06 /* Exo-ExtraLightItalic.ttf in Resources */,
 				142EB2681D6B76B000D62E06 /* Exo-ThinItalic.ttf in Resources */,
 				142EB2621D6B76B000D62E06 /* Exo-Medium.ttf in Resources */,
 				14ABC5321CE4363D006AAC2F /* LICENSE in Resources */,
 				142EB2571D6B76B000D62E06 /* Exo-Black.ttf in Resources */,
 				142EB2601D6B76B000D62E06 /* Exo-Light.ttf in Resources */,
-				14ABC4E21CE39774006AAC2F /* Main.storyboard in Resources */,
 				142EB25F1D6B76B000D62E06 /* Exo-Italic.ttf in Resources */,
 				142EB2581D6B76B000D62E06 /* Exo-BlackItalic.ttf in Resources */,
 				142EB2641D6B76B000D62E06 /* Exo-Regular.ttf in Resources */,
+				140967021D7A4BFD00FA5EBE /* FontAwesome.otf in Resources */,
 				142EB25B1D6B76B000D62E06 /* Exo-ExtraBold.ttf in Resources */,
 				142EB2611D6B76B000D62E06 /* Exo-LightItalic.ttf in Resources */,
 				142EB25A1D6B76B000D62E06 /* Exo-BoldItalic.ttf in Resources */,
@@ -517,27 +560,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				146E2C4E1D74E6930083D4B2 /* AccounMO+CoreDataProperties.swift in Sources */,
 				14384B271D4AD06500B897C8 /* TwofaViewController.swift in Sources */,
 				14D1999D1CF7AD2E00A57EA1 /* StatusAlertViewController.swift in Sources */,
 				1431FDC21D401DB100CD7075 /* TransactionsViewController.swift in Sources */,
 				14860D361CEF83370073302B /* ImageCache.swift in Sources */,
+				141B045C1D7DC1220029201A /* RightMenuTableViewController.swift in Sources */,
 				14ABC5331CE4363D006AAC2F /* README.md in Sources */,
 				14384B251D4A991B00B897C8 /* SWRevealViewController.m in Sources */,
-				1462B6401CF8FCD000619901 /* ProcessingViewController.swift in Sources */,
+				1435984F1D70D98900B687EE /* TransactionTableViewCell.swift in Sources */,
+				143889231D772C5C00EBF804 /* AccountViewController.swift in Sources */,
+				146E2C4F1D74E6930083D4B2 /* AccounMO.swift in Sources */,
+				140966FB1D79D10F00FA5EBE /* SiteTableViewCell.swift in Sources */,
 				142A39161D6DF8B5007FAC0B /* SignInViewController2.swift in Sources */,
 				14BF43391CE6824800C45D64 /* BankCell.swift in Sources */,
 				14ED412D1D3EE41B002E93C0 /* SignInViewController.swift in Sources */,
-				14BF433B1CE6833C00C45D64 /* LinkAccountViewController.swift in Sources */,
 				14860D341CEF82BE0073302B /* Config.swift in Sources */,
 				14ABC4E51CE39775006AAC2F /* LitePaybook.xcdatamodeld in Sources */,
-				14860D321CEF77B80073302B /* CredentialsViewController.swift in Sources */,
 				14BF433D1CE685BE00C45D64 /* SignUpViewController.swift in Sources */,
 				14860D3A1CEFC5E90073302B /* CredentialCell.swift in Sources */,
 				146CD20F1D6CCEFD002BBD38 /* UserMO+CoreDataProperties.swift in Sources */,
 				14ABC4DD1CE39774006AAC2F /* AppDelegate.swift in Sources */,
+				1432D6AF1D709D270057D16F /* TransactionMO.swift in Sources */,
 				14212AE71CE4E2B200BC14F7 /* IndexViewController.swift in Sources */,
 				146CD2101D6CCEFD002BBD38 /* UserMO.swift in Sources */,
+				140966FD1D7A3B3000FA5EBE /* Twofa2ViewController.swift in Sources */,
+				1459F9A31D78A396005F3E54 /* AccountStep1ViewController.swift in Sources */,
+				143889251D77310900EBF804 /* AccountTableViewCell.swift in Sources */,
+				1432D6AE1D709D270057D16F /* TransactionMO+CoreDataProperties.swift in Sources */,
 				1426DAC21CEC32B60068A442 /* SettingsViewController.swift in Sources */,
+				140966F71D79CE6600FA5EBE /* SelectSiteViewController.swift in Sources */,
+				1459F9A51D78A671005F3E54 /* SiteOrganizationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,10 +626,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		14ABC4E01CE39774006AAC2F /* Main.storyboard */ = {
+		140966FE1D7A3FAE00FA5EBE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				14ABC4E11CE39774006AAC2F /* Base */,
+				140966FF1D7A3FAE00FA5EBE /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -680,10 +733,12 @@
 			baseConfigurationReference = F8F7397432A26BED8ABF2BC2 /* Pods-LitePaybook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LitePaybook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paybook.LitePaybook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paybook.PaybookLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LitePaybook-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -695,10 +750,12 @@
 			baseConfigurationReference = E6D4FD635243272933D6EEF0 /* Pods-LitePaybook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LitePaybook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.paybook.LitePaybook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paybook.PaybookLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LitePaybook-Bridging-Header.h";
 			};

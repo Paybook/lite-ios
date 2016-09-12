@@ -9,24 +9,28 @@
 import UIKit
 import Paybook
 
-class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
 
     var bank : Site_organization! = nil
     var site : Site! = nil
-    var siteId : String!
     var credential : Credentials!
     var credentials = NSArray()
     var timer : NSTimer!
+    var textActive : UITextField! = nil
     
-    
+    @IBOutlet weak var processingLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var credentialCollectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var processingView: UIView!
-    @IBAction func cancelFunc(sender: AnyObject) {
+    @IBAction func cancel(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    @IBAction func close(sender: AnyObject) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     @IBAction func continueFunc(sender: AnyObject) {
         
         let arrayCredential = credentialCollectionView.visibleCells() as! [CredentialCell]
@@ -89,10 +93,6 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 case 410:
                     print("Waiting for two-fa \(status["code"])")
                     print(status)
-                    
-                    
-                    
-                    
                     self.timer.invalidate()
                     break
                 case 411:
@@ -137,13 +137,11 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func setProcessing(){
         print("Processing")
-        processingView.hidden = false
-        
-        
+        processingLabel.hidden = false
     }
     
     func setError(desc: String?){
-        
+        processingLabel.hidden = true
         let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
         statusAlert.status = [
             "title":"Problema de conexión.",
@@ -155,7 +153,7 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func setFinished(desc:String){
         print("Success \(desc)")
-        
+        processingLabel.hidden = true
         let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
         statusAlert.status = [
             "title":"La institución fue procesada correctamente.",
@@ -168,7 +166,7 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     
     
-    
+    // *** MARK : CollectionView protocols 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return credentials.count
     }
@@ -183,12 +181,52 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         return cell
     }
+    // MARK : CollectionView protocols ***
+    
+    
+    // *** MARK : Text Fields protocols and Keyboard Notifications
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textActive = textField
+        
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        view.endEditing(true)
+        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            
+            
+            let p = textActive.convertPoint(textActive.center, toView: self.view)
+            
+            if (p.y) > (self.view.frame.size.height - keyboardSize.height){
+                scrollView.setContentOffset(CGPointMake(0,(p.y) - (self.view.frame.size.height - keyboardSize.height)), animated: true)
+            }
+            
+        }
+        
+    }
+    
+    // MARK : Text Fields protocols and Keyboard Notifications ***
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated:true);
         if bank != nil {
-            nameLabel.text = bank.name
+            
             if let coverImage = bank.cover{
                 let url = NSURL(string: url_images+coverImage )
                 url!.fetchImage { image in
@@ -197,33 +235,22 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
             }
             
+        }else{
+            if isTest {
+                coverImageView.image = UIImage(named: "acme-cover")
+            }
         }
+        nameLabel.text = site?.name
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SelectSiteViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         
-        /*
-         if bank != nil {
-         nameLabel.text = bank["name"] as? String
-         if let coverImage = bank["cover"] as? String{
-         let url = NSURL(string: url_images+coverImage )
-         url!.fetchImage { image in
-         self.coverImageView.image = image
-         }
-         
-         }
-         if let sites = bank["sites"] as? NSArray{
-         for i in sites{
-         if i["id_site"] as? String == self.siteId{
-         credentials = (i["credentials"] as? NSArray)!
-         }
-         }
-         }
-         
-         
-         
-         }*/
-        // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
