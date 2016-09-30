@@ -10,7 +10,7 @@ import UIKit
 import Paybook
 
 
-class SignInViewController2: UIViewController, UITextFieldDelegate {
+class SignInViewController2: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     var textActive : UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -26,7 +26,7 @@ class SignInViewController2: UIViewController, UITextFieldDelegate {
         warningLabel.hidden = true
         print("Check password")
         if let user = UserMO.checkPassword(emailTextField.text!, password: passwordTextField.text!){
-            print("Get session")
+            print("Get session", user.id_user)
             _ = Session(id_user: user.id_user!, completionHandler: {
                 session, error in
                 if session != nil{
@@ -69,9 +69,9 @@ class SignInViewController2: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let nextTag: NSInteger = textField.tag + 1;
         
-        if textField.tag == 2{
+        if textField.tag == 1{
             view.endEditing(true)
-            
+            self.signIn(self)
         }else{
             // Try to find next responder
             if let nextResponder: UIResponder! = textField.superview!.viewWithTag(nextTag){
@@ -118,7 +118,7 @@ class SignInViewController2: UIViewController, UITextFieldDelegate {
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController2.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
     }
 

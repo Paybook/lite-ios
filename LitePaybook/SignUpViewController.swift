@@ -88,6 +88,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    // *** MARK TextField protocols
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textActive = textField
@@ -109,7 +110,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         
         if textField.tag == 2{
             view.endEditing(true)
-            
+            self.signUp(self)
         }else{
             // Try to find next responder
             if let nextResponder: UIResponder! = textField.superview!.viewWithTag(nextTag){
@@ -123,6 +124,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         }
         return true // We do not want UITextField to insert line-breaks.
     }
+    
+    // MARK TextField protocols ***
+    
     
     func keyboardWillShow(notification: NSNotification) {
         

@@ -37,30 +37,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        /*
-        if ((NSUserDefaults.standardUserDefaults().objectForKey("token") as? String) != nil) {
-            validateSession(NSUserDefaults.standardUserDefaults().objectForKey("token")! as! String, callback: nil, callback_error:{ code in
-                if code == 401{
-                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    self.window!.rootViewController = storyboard.instantiateInitialViewController()
-                }
-                
-            })
-        }
-        */
-        
         if currentSession != nil{
-            currentSession.validate(){
+            
+            currentSession.validate({
                 response, error in
-                if response != nil && response == true {
+                if error != nil {
+                    print("check session:", error?.message)
+                    currentSession = nil
+                    isTest = false
                     
+                    let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("indexView") as! IndexViewController
+                    nextWindow.expired = true
+                    
+                    let navigationController = UINavigationController(rootViewController: nextWindow)
+                    nextWindow.navigationController?.setNavigationBarHidden(true, animated: false)
+                    
+                    self.window?.rootViewController = navigationController
+                    
+                    //rootViewController!.presentViewController(navigationController, animated: true, completion: nil)
                 }else{
-                    NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "token")
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    self.window!.rootViewController = storyboard.instantiateInitialViewController()
+                    print("check session:",response)
                 }
-            }
+            })
+            
         }
         
     }

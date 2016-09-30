@@ -9,10 +9,11 @@
 import UIKit
 import Paybook
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     
     @IBOutlet weak var switchEnviroment: UISwitch!
     @IBOutlet weak var topBar: UIView!
+    @IBOutlet weak var shadowMask: UIView!
     
    
     
@@ -30,6 +31,23 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    
+    
+    // *** MARK SWRevealViewController protocol
+    
+    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+        
+        if(revealController.frontViewPosition == FrontViewPosition.Left) {
+            self.shadowMask.hidden = false
+        } else {
+            self.shadowMask.hidden = true
+            
+        }
+    }
+    
+    // MARK SWRevealViewController protocol ***
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +61,7 @@ class SettingsViewController: UIViewController {
         
         
         if self.revealViewController() != nil{
-           
+            self.revealViewController().delegate = self
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         

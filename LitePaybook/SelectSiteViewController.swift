@@ -10,6 +10,11 @@ import UIKit
 import Paybook
 
 
+
+protocol LinkAccounts : class {
+    func updateAccounts()
+}
+
 class SelectSiteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
 
     var organization : Site_organization! = nil
@@ -17,17 +22,22 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     var site : Site! = nil
     var credential : Credentials! = nil
     var timer : NSTimer!
+    var timerProcessing : NSTimer!
     var sending : Bool = false
     var textActive : UITextField! = nil
+    var processing = false
     
+    weak var mDelegate: LinkAccounts?
     
     @IBOutlet weak var coverImageView: UIImageView!
     
+    @IBOutlet weak var processingIcon: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var twofaView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var prcessingLabel: UILabel!
+    @IBOutlet weak var processingLabel: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
     
     @IBAction func cancel(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
@@ -40,11 +50,12 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @IBAction func continueFunc(sender: AnyObject) {
+        self.continueButton.enabled = false
         
         let arrayCredential = collectionView.visibleCells() as! [CredentialCell]
         var credentialsString = [String:String]()
         for i in arrayCredential{
-            credentialsString[i.nameLabel.text!] = i.textField.text
+            credentialsString[i.nameField!] = i.textField.text
         }
         
         
@@ -63,8 +74,10 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
                 
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
-                
-                
+            }else{
+                print(error?.message)
+                self.setError(error?.message);
+                self.continueButton.enabled = true
             }
             
             
@@ -86,11 +99,11 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
                     switch status["code"] as! Int{
                     case 100,101,102,103,104,105 :
                         print("Processing...\(status["code"])")
-                        self.setProcessing();
                         break
                     case 200,201,202,203:
                         self.setFinished("La institución fue procesada correctamente. El sistema continúa trabajando en extraer la información necesaria.");
                         print("Success...\(status["code"])")
+                        self.mDelegate?.updateAccounts()
                         self.timer.invalidate()
                         break
                     case 301,401,402,403:
@@ -113,10 +126,6 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
                         twofaViewController.credential = self.credential
                         twofaViewController.credentials = status["twofa"] as! NSArray
                         self.navigationController?.pushViewController(twofaViewController, animated: true)
-                        
-                        
-                        
-                        
                         self.timer.invalidate()
                         break
                     case 411:
@@ -161,19 +170,36 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    // Rotate <targetView> indefinitely
+    private func rotateView(targetView: UIView, duration: Double = 1.0) {
+        UIView.animateWithDuration(duration, delay: 0.0, options: .CurveLinear, animations: {
+            targetView.transform = CGAffineTransformRotate(targetView.transform, CGFloat(M_PI))
+        }) { finished in
+            if (self.processing){
+                self.rotateView(targetView, duration: duration)
+            }
+        }
+    }
+    
     func setProcessing(){
         print("Processing")
+        processing = true
         UIView.animateWithDuration(0.5, animations: {
-            self.prcessingLabel.hidden = false
+            self.processingLabel.alpha = 1.0
+            self.processingIcon.alpha = 1.0
+            },completion: {
+                finished in
+               self.rotateView(self.processingIcon)
         })
-        
-        
-        
         
     }
     
     func setError(desc: String?){
-        self.prcessingLabel.hidden = true
+        processing = false
+        self.processingLabel.alpha = 0.0
+        self.processingIcon.alpha = 0.0
+        self.continueButton.enabled = true
+        
         let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
         statusAlert.status = [
             "title":"Problema de conexión.",
@@ -185,7 +211,11 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     
     func setFinished(desc:String){
         print("Success \(desc)")
-        self.prcessingLabel.hidden = true
+        processing = false
+        self.processingLabel.alpha = 0.0
+        self.processingIcon.alpha = 0.0
+        self.continueButton.enabled = true
+        
         let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
         statusAlert.status = [
             "title":"La institución fue procesada correctamente.",
@@ -275,8 +305,9 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
         
         if site != nil{
             let credential = site.credentials[indexPath.row]
-            cell.nameLabel.text = credential["name"] as? String
-            
+            //print(credential)
+            cell.nameLabel.text = credential["label"] as? String
+            cell.nameField = credential["name"] as? String
             if credential["type"] as? String == "password"{
                 cell.textField.secureTextEntry = true
             }
@@ -331,6 +362,10 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let arrayV = self.navigationController?.viewControllers
+        let viewcontroller = arrayV![0] as? AccountViewController
+        mDelegate = viewcontroller
+        
         if isTest{
             self.coverImageView.image = UIImage(named: "acme-cover")
             Catalogues.get_sites(currentSession, id_user: nil, is_test: isTest, completionHandler: {

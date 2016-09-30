@@ -17,8 +17,10 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     var credentials = NSArray()
     var timer : NSTimer!
     var textActive : UITextField! = nil
+    var processing = false
     
     @IBOutlet weak var processingLabel: UILabel!
+    @IBOutlet weak var processingIcon: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var credentialCollectionView: UICollectionView!
@@ -36,11 +38,11 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
         let arrayCredential = credentialCollectionView.visibleCells() as! [CredentialCell]
         var credentialsString = [String:String]()
         for i in arrayCredential{
-            credentialsString[i.nameLabel.text!] = i.textField.text
+            credentialsString[i.nameField] = i.textField.text
         }
         
         
-        print(credentialsString)
+        print("SEnding",credentialsString)
         
         
         credential.set_twofa(currentSession, id_user: nil, params: credentialsString){
@@ -50,7 +52,7 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 print("\nCheck Status:")
                 self.setProcessing()
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
             }
             
@@ -72,7 +74,6 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 switch status["code"] as! Int{
                 case 100,101,102,103,104,105 :
                     print("Processing...\(status["code"])")
-                    self.setProcessing();
                     break
                 case 200,201,202,203:
                     self.setFinished("La institución fue procesada correctamente. El sistema continúa trabajando en extraer la información necesaria.");
@@ -135,13 +136,35 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
         
     }
     
+    // Rotate <targetView> indefinitely
+    private func rotateView(targetView: UIView, duration: Double = 1.0) {
+        UIView.animateWithDuration(duration, delay: 0.0, options: .CurveLinear, animations: {
+            targetView.transform = CGAffineTransformRotate(targetView.transform, CGFloat(M_PI))
+        }) { finished in
+            if (self.processing){
+                self.rotateView(targetView, duration: duration)
+            }
+        }
+    }
+    
     func setProcessing(){
         print("Processing")
-        processingLabel.hidden = false
+        processing = true
+        UIView.animateWithDuration(0.5, animations: {
+            self.processingLabel.alpha = 1.0
+            self.processingIcon.alpha = 1.0
+            },completion: {
+                finished in
+                self.rotateView(self.processingIcon)
+        })
+        
     }
     
     func setError(desc: String?){
-        processingLabel.hidden = true
+        processing = false
+        self.processingLabel.alpha = 0.0
+        self.processingIcon.alpha = 0.0
+
         let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
         statusAlert.status = [
             "title":"Problema de conexión.",
@@ -152,8 +175,10 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func setFinished(desc:String){
-        print("Success \(desc)")
-        processingLabel.hidden = true
+        processing = false
+        self.processingLabel.alpha = 0.0
+        self.processingIcon.alpha = 0.0
+
         let statusAlert = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("statusAlertViewController") as! StatusAlertViewController
         statusAlert.status = [
             "title":"La institución fue procesada correctamente.",
@@ -174,8 +199,8 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("credentialCell", forIndexPath: indexPath) as! CredentialCell
         let credential = credentials[indexPath.row]
-        cell.nameLabel.text = credential["name"] as? String
-        
+        cell.nameLabel.text = credential["label"] as? String
+        cell.nameField = credential["name"] as? String
         if credential["type"] as? String == "password"{
             cell.textField.secureTextEntry = true
         }

@@ -43,10 +43,8 @@ class RightMenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 4 {
-            print("Logout")/*
-            let indexViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("index") as! IndexViewController
-            
-            self.presentViewController(indexViewController, animated: true, completion: nil)*/
+            print("Logout")
+ 
             currentSession = nil
             isTest = false
             

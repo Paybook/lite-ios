@@ -12,5 +12,6 @@ class CredentialCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    var nameField : String!
     
 }

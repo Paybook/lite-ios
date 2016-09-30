@@ -19,6 +19,7 @@ class StatusAlertViewController: UIViewController {
     @IBOutlet weak var succesButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var topBar: UIView!
     
     @IBAction func addOtherAccount(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -51,6 +52,14 @@ class StatusAlertViewController: UIViewController {
         descLabel.text = status["desc"] as? String
     }
 
+    override func viewDidAppear(animated: Bool) {
+        print("animation")
+        UIView.animateWithDuration(1, animations: {
+            self.topBar.center.y = 30
+        })
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

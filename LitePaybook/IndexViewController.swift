@@ -12,8 +12,10 @@ import Paybook
 
 class IndexViewController: UIViewController {
     
-    
+    var expired : Bool = false
+    var timer : NSTimer!
     @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var alertView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +34,29 @@ class IndexViewController: UIViewController {
         
         self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
         
+        logInButton.layer.borderColor = UIColor.whiteColor().CGColor
+        logInButton.layer.borderWidth = 1.0
         
         // Do any additional setup after loading the view.
     }
     
+    func closeAlert () {
+        UIView.animateWithDuration(0.5, animations: {
+            self.alertView.center.y = -30
+        })
+        self.timer.invalidate()
+    }
+    
     override func viewDidAppear(animated: Bool) {
+        if expired {
+            UIView.animateWithDuration(0.5, animations: {
+                self.alertView.center.y = 30
+            })
+           
+            timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(self.closeAlert), userInfo: nil, repeats: false)
+        }
+            
         
-        logInButton.layer.borderColor = UIColor.whiteColor().CGColor
-        logInButton.layer.borderWidth = 1.0
     }
     
     override func didReceiveMemoryWarning() {

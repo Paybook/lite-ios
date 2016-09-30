@@ -25,27 +25,11 @@ class SignInViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 response, error in
                 if response != nil{
                     self.openDashboard(response!)
+                    print(response!.token)
                 }else{
                     print(error?.message)
                 }
             }
-        
-            /*
-            if (UserMO.checkPassword(userSelected!.name, password: "gabriel") != nil){
-                print("Success")
-                //Get a Paybook session
-                _ = Session(id_user: userSelected.id_user){
-                    response, error in
-                    if response != nil{
-                        self.openDashboard(response!)
-                    }else{
-                        print(error?.message)
-                    }
-                }
-
-            }else{
-                print("Fail")
-            }*/
         }
         
       
