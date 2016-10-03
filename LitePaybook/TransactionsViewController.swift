@@ -24,10 +24,17 @@ class TransactionsViewController: UIViewController, UITableViewDataSource , UITa
     
     
     @IBAction func filterTransactions(sender: AnyObject) {
-        let filterViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("filterViewController") as? FilterViewController
-        filterViewController?.mDelegate = self
         
-        self.navigationController?.pushViewController(filterViewController!, animated: true)
+        
+        if !searchController.active {
+            let filterViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("filterViewController") as? FilterViewController
+            filterViewController?.mDelegate = self
+            
+            self.navigationController?.pushViewController(filterViewController!, animated: true)
+        }
+
+        
+        
     }
     
     @IBAction func openMenu(sender: AnyObject) {

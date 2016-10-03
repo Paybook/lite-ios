@@ -1,60 +1,40 @@
-# lite-ios
+# Paybook Lite-ios
 
-A very simple and light interface to demonstrate how to take advantage of the Paybook Financial API (Sync) to pull information from Mexican Banks and Tax Authority.
+### Requerimientos
 
-# Rquirements.
-- Xcode Version 7.3
-- Cocoapods
-- Paybook Sync API key
+1. Xcode Version 7+
+2. [Cocoapods](https://cocoapods.org) 
+3. Un API Key de Paybook
+
+### Descripción:
+
+Este es un proyecto que muestra como construir una aplicación para iOS, haciendo uso de la librería de Paybook iOS, para traer información de bancos de México y Autoridades Tributarias(SAT). La aplicación tiene la siguientes características:
+
+1. Integración completa con el API Rest de Paybook a través de la librería de Paybook para iOS [sync-ios](https://github.com/Paybook/sync-ios)
+2. Cuenta con los endpoints básicos para que tu puedas construir a partir de estos tu propia aplicación, reciclándolos, o bien, agregando tus propios endpoints.
+3. Cuenta con persistencia de datos para encargarse del manejo de cuentas de usuario localmente. 
+4. Contiene las siguientes funcionalidades: registro de usuarios, inicio de sesión, registro y borrado de credenciales de instituciones y consulta de transacciones.
 
 
-To make api requests for paybook methods, you will need set the api_url of the server in the file "Config.swift", or you can install lite-python and use local host.
-```
-let api_url : String = "<your url server>"
-let api_key : String = "<your API key>"
-```
 
-#Install
-- Use terminal to clone repository.
-`git clone https://github.com/Paybook/lite-ios.git`
-- Install and config [lite-python](https://github.com/Paybook/lite-python) 
+###Instalación:
+Usar la terminal para clonar el proyecto en nuestro equipo.
+`$ git clone https://github.com/Paybook/lite-ios.git`
 
-#Install Cocoapods
-1. If you haven't got Cocoapods installed, run: 
-`gem install cocoapods` then
-`pod setup`
+###Instalar dependencias.
+Trasladarse por medio de la terminal al directorio del proyecto y ejecutar el siguiente comando.
+```$ pod install```
 
-2. Go your lite-ios directory and create a pod file with:
-`$ pod init`
-3. Open in xcode and replace the content with:
-```
-platform :ios, '9.0'
-use_frameworks!
+Abrir el proyecto.
+```$ open -a Xcode LitePaybook.xcworkspace```
 
-target 'LitePaybook' do
-    use_frameworks!
-  pod 'Alamofire', '~> 3.1.2'
-  pod 'SocketRocket'
-  
-end
-```
-#API Request
-You can config your API request in ApiCall file.
 
-**signup**
-```
-var data = [
-  username: String,
-  password: String
-]
-signup (data: [String:String], callback: (()-> Void)?, callback_error: (()-> Void)?)
+### Ejecución:
+
+Agregar tu api_key en el archivo "Config/Config.swift" 
+
+```swift
+let api_key : String = "YOUR_API_KEY"
 ```
 
-**login**
-```
-var data = [
-  username: String,
-  password: String
-]
-login (data: [String:String], callback: ((token : String?)-> Void), callback_error: (()-> Void)?)
-```
+Ejecutar la aplicación en el simulador.

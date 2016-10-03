@@ -18,6 +18,7 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
     var timer : NSTimer!
     var textActive : UITextField! = nil
     var processing = false
+    weak var mDelegate: LinkAccounts?
     
     @IBOutlet weak var processingLabel: UILabel!
     @IBOutlet weak var processingIcon: UILabel!
@@ -79,6 +80,7 @@ class TwofaViewController: UIViewController, UICollectionViewDelegate, UICollect
                     self.setFinished("La institución fue procesada correctamente. El sistema continúa trabajando en extraer la información necesaria.");
                     print("Success...\(status["code"])")
                     self.timer.invalidate()
+                    self.mDelegate?.updateAccounts()
                     break
                 case 301,401,402,403:
                     self.setError("Credenciales incorrectas. Por favor, vuelva a intentarlo.");

@@ -12,6 +12,7 @@ import Paybook
 
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate, LinkAccounts {
 
+    var sitesArray : [Site_organization] = []
     var accountsArray : [Account] = []
     var credentialsArray : NSArray = []
     var credentialsDict : [String : [Account]] = [:]
@@ -63,20 +64,13 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     // *** MARK TableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        /*
-        let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("transactionsViewController") as! TransactionsViewController
-        let navigationController = UINavigationController(rootViewController: nextWindow)
-        nextWindow.navigationController?.setNavigationBarHidden(true, animated: false)
+       
         
-        self.revealViewController().pushFrontViewController(navigationController, animated: true)*/
-        
-        
-        let id_credential = credentialsArray[indexPath.row] as! String
-        
-        
+        let credential = credentialsArray[indexPath.row]
         
         let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("accountDetailViewController") as! AccountDetailViewController
-        nextWindow.accountsArray = credentialsDict[id_credential]!
+        nextWindow.credential = credential as! Credentials
+        //nextWindow.site = credential as! Credentials
         nextWindow.mDelegate = self
         self.navigationController?.pushViewController(nextWindow, animated: true)
     }
@@ -93,31 +87,48 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         if cell == nil {
             cell = AccountTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "AccountCell")
         }
-        
-        //credentialsDict.indices
+        /*
         let key = credentialsArray[indexPath.row] as! String
         let account = credentialsDict[key]![0]
-       
-        if let avatarImage =  account.site.valueForKey("avatar") as? String{
-            let url = NSURL(string: url_images + avatarImage)
-            if let image = url!.cachedImage {
-                // Cached: set immediately.
-                cell!.avatarImageView.image = image
-            } else {
-                // Not cached, so load then fade it in.
-                url!.fetchImage { image in
-                    // Check the cell hasn't recycled while loading.
-                    cell!.avatarImageView.image = image
-                    
+       */
+        
+        let account = credentialsArray[indexPath.row] as? Credentials
+        
+        var found = false
+        for site in sitesArray {
+            if site.id_site_organization == account?.id_site_organization{
+                cell!.accounLabel.text = site.name
+                found = true
+                if let avatarImage = site.avatar {
+                    let url = NSURL(string: url_images + avatarImage)
+                    if let image = url!.cachedImage {
+                        // Cached: set immediately.
+                        cell!.avatarImageView.image = image
+                    } else {
+                        // Not cached, so load then fade it in.
+                        url!.fetchImage { image in
+                            // Check the cell hasn't recycled while loading.
+                            cell!.avatarImageView.image = image
+                            
+                        }
+                    }
                 }
+              
             }
         }
         
-        cell!.accounLabel.text = account.site.valueForKey("name") as? String
-        cell!.siteLabel.text = account.site.valueForKey("name") as? String
+        
+        if !found {
+            cell!.accounLabel.text = "Acme Bank"
+            cell!.avatarImageView.image = UIImage(named: "acme-avatar-red")
+            
+        }
+        
+        
+        cell!.siteLabel.text = account?.username
  
         
-        cell!.balanceLabel.text = "$ \(account.balance)"
+        //cell!.balanceLabel.text = "$ \(account.balance)"
         
         return cell!
     }
@@ -141,6 +152,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func updateAccounts() {
         print("Update protocols")
+        
+        /*
         Account.get(currentSession, id_user: nil, completionHandler: {
             accounts, error in
             if accounts != nil {
@@ -160,9 +173,20 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.hidden = true
             }
         })
-
+        */
+        Credentials.get(currentSession, id_user: nil, completionHandler: {
+            credentials, error in
+            if credentials != nil{
+                self.credentialsArray = credentials!
+                self.tableView.reloadData()
+            }
+            
+        })
 
     }
+    
+    
+    
     func showEditing(sender: UIBarButtonItem)
     {
         if(self.tableView.editing == true)
@@ -186,6 +210,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        /*
+        
         Account.get(currentSession, id_user: nil, completionHandler: {
             accounts, error in
             if accounts != nil {
@@ -208,7 +234,27 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.hidden = true
             }
         })
-        
+        */
+ 
+        Catalogues.get_site_organizations(currentSession, id_user: nil, completionHandler: {
+            sites, error in
+            if sites != nil{
+                self.sitesArray = sites!
+                Credentials.get(currentSession, id_user: nil, completionHandler: {
+                    credentials, error in
+                    if credentials != nil{
+                        self.credentialsArray = credentials!
+                        self.tableView.reloadData()
+                    }
+                    
+                })
+            }else{
+                print(error?.message)
+            }
+        })
+ 
+ 
+ 
         let topColor  = UIColor(colorLiteralRed: (216/255.0), green: (57/255.0), blue: (72/255.0), alpha: 1.0)
         let bottomColor  = UIColor(colorLiteralRed: (78/255.0), green: (51/255.0), blue: (90/255.0), alpha: 1.0)
         

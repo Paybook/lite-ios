@@ -124,6 +124,7 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
                         twofaViewController.bank = self.organization
                         twofaViewController.site = self.site
                         twofaViewController.credential = self.credential
+                        twofaViewController.mDelegate = self.mDelegate
                         twofaViewController.credentials = status["twofa"] as! NSArray
                         self.navigationController?.pushViewController(twofaViewController, animated: true)
                         self.timer.invalidate()

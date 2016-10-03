@@ -12,7 +12,9 @@ import Paybook
 class AccountDetailViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var accountsArray : [Account] = []
-    var site : AnyObject!
+    var site : Site_organization!
+    var credential : Credentials!
+    
     weak var mDelegate: LinkAccounts?
     
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -62,7 +64,18 @@ class AccountDetailViewController: UIViewController, UITableViewDelegate,UITable
             })
         })
         */
-        
+        Credentials.delete(currentSession, id_user: nil, id_credential: credential.id_credential, completionHandler: {
+            response , error  in
+            print("Response Delete", response)
+            if (response != nil) {
+                
+                
+                self.mDelegate?.updateAccounts()
+                self.navigationController?.popViewControllerAnimated(true)
+            }else{
+                print(error)
+            }
+        })
         
     }
     // *** MARK TableVie Protocols
@@ -153,24 +166,35 @@ class AccountDetailViewController: UIViewController, UITableViewDelegate,UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if accountsArray.count > 0{
-            site = accountsArray[0].site
-            if let avatarImage =  accountsArray[0].site.valueForKey("small_cover") as? String{
-                let url = NSURL(string: url_images + avatarImage)
-                if let image = url!.cachedImage {
-                    // Cached: set immediately.
-                   self.avatarImageView.image = image
-                } else {
-                    // Not cached, so load then fade it in.
-                    url!.fetchImage { image in
-                        // Check the cell hasn't recycled while loading.
-                        self.avatarImageView.image = image
-                        
+        print(credential.id_credential)
+        Account.get(currentSession, id_user: nil, options: ["id_credential": credential.id_credential], completionHandler: {
+            accounts, error in
+            if accounts != nil {
+                self.accountsArray = accounts!
+                
+                if accounts!.count > 0{
+                    if let avatarImage = accounts![0].site.valueForKey("small_cover") as? String{
+                        let url = NSURL(string: url_images + avatarImage)
+                        if let image = url!.cachedImage {
+                            // Cached: set immediately.
+                            self.avatarImageView.image = image
+                        } else {
+                            // Not cached, so load then fade it in.
+                            url!.fetchImage { image in
+                                // Check the cell hasn't recycled while loading.
+                                self.avatarImageView.image = image
+                                
+                            }
+                        }
                     }
                 }
+                self.tableView.reloadData()
+            }else{
+                    print(error?.message)
             }
-            
-        }
+        })
+        
+        
         
         // Do any additional setup after loading the view.
     }
