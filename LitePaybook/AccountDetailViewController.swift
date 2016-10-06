@@ -16,6 +16,7 @@ class AccountDetailViewController: UIViewController, UITableViewDelegate,UITable
     var credential : Credentials!
     
     weak var mDelegate: LinkAccounts?
+    //weak var menuDelegate: MenuSelection?
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -106,6 +107,11 @@ class AccountDetailViewController: UIViewController, UITableViewDelegate,UITable
             
             nextWindow.filtered = ["id_account":account.id_account]
             self.revealViewController().pushFrontViewController(navigationController, animated: true)
+            if rightMenuDelegate != nil{
+                rightMenuDelegate.selectMenuOption("Transactions")
+            }
+            
+            
         }
         
     }

@@ -8,11 +8,13 @@
 
 import UIKit
 
-class RightMenuTableViewController: UITableViewController {
+
+
+class RightMenuTableViewController: UITableViewController, MenuSelection {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        rightMenuDelegate = self
        
     }
 
@@ -23,6 +25,29 @@ class RightMenuTableViewController: UITableViewController {
     @IBOutlet weak var transactionLabel: UILabel!
     @IBOutlet weak var settingLabel: UILabel!
     
+    
+    
+    func selectMenuOption(selection: String) {
+        switch selection {
+        case "Accounts" :
+            accountTab.hidden = false
+            transactionsTab.hidden = true
+            settingTab.hidden = true
+            break
+        case "Transactions" :
+            accountTab.hidden = true
+            transactionsTab.hidden = false
+            settingTab.hidden = true
+            break
+        case "Settings" :
+            accountTab.hidden = true
+            transactionsTab.hidden = true
+            settingTab.hidden = false
+            break
+        default :
+            break
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
