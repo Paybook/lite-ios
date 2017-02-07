@@ -50,7 +50,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func newAccount(sender: AnyObject) {
         if isTest {
-            let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("selectSiteViewController") as! SelectSiteViewController
+            let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectSiteViewController2") as! SelectSiteViewController
             
             self.navigationController?.pushViewController(nextWindow, animated: true)
         }else{

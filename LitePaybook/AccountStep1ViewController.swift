@@ -90,7 +90,7 @@ class AccountStep1ViewController: UIViewController, UITableViewDelegate,UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("selectSiteViewController") as! SelectSiteViewController
+        let nextWindow = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectSiteViewController2") as! SelectSiteViewController
         
         nextWindow.organization = site_organizations[indexPath.row]
         self.navigationController?.pushViewController(nextWindow, animated: true)

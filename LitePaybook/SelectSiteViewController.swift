@@ -39,17 +39,20 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var processingLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
-    @IBAction func close(sender: AnyObject) {
+    
+    
+    
+    @IBAction func close(_ sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // *** MARK :
     
     
-    @IBAction func continueFunc(sender: AnyObject) {
+    @IBAction func continueFunc(_ sender: AnyObject) {
         self.continueButton.enabled = false
         
         let arrayCredential = collectionView.visibleCells() as! [CredentialCell]
@@ -263,7 +266,7 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         
-        
+        print("names    ",sites[indexPath.row].name)
         
         cell!.nameLabel.text = sites[indexPath.row].name
         
@@ -282,8 +285,13 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.site = self.sites[indexPath.row]
+        
+        print("\n\nChose this site",site)
+        
         self.collectionView.reloadData()
-        self.twofaView.hidden = false
+        self.tableView.alpha = 0.0
+        self.twofaView.alpha = 1.0
+        
     }
     
     
@@ -293,9 +301,13 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
     //*** MARK : CollectionView protocols
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
         if site != nil{
+            print("site count ",site.credentials.count)
             return site.credentials.count
         }else{
+            print("site nil")
             return 0
         }
         
@@ -376,7 +388,8 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
                     if self.sites.count == 1{
                         self.site = self.sites[0]
                         self.collectionView.reloadData()
-                        self.twofaView.hidden = false
+                        self.twofaView.alpha = 1.0
+                        self.tableView.alpha = 0.0
                     }else{
                         self.tableView.reloadData()
                     }
@@ -400,20 +413,27 @@ class SelectSiteViewController: UIViewController, UITableViewDataSource, UITable
                     }
                 }
                 
+                print("\nOrg Chose: ",organization)
+                
                 Catalogues.get_sites(currentSession, id_user: nil, is_test: isTest, options: ["id_site_organization":organization.id_site_organization], completionHandler: {
                     sites , error in
                     if sites != nil {
+                        
+                        print("sites: ",sites)
                         self.sites = sites!
                         if self.sites.count == 1{
                             self.site = self.sites[0]
                             self.collectionView.reloadData()
-                            self.twofaView.hidden = false
+                            self.twofaView.alpha = 1.0
+                            self.tableView.alpha = 0.0
                         }else{
                             self.tableView.reloadData()
                         }
                         
                     }
                 })
+            }else{
+                print("\n\n Organization nil")
             }
         }
         
